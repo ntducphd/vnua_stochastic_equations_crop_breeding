@@ -1,0 +1,50 @@
+symbol,label,v5_id,category,protein_or_function,food_corn_relevance,allele_notes,source_note
+sh2,sh2,Zm00001eb159060,1_starch_sugar,AGPase large subunit (endosperm),Supersweet (sh2) sweet corn; main gene in commercial fresh/processing hybrids,sh2-R = complex structural variant; fully assembled in Ia453-sh2,Hu et al. 2021 Nat Commun (R0018)
+bt2,bt2,Zm00001eb176800,1_starch_sugar,AGPase small subunit (endosperm),Alternative supersweet type (bt2),,MaizeGDB v5 annotation
+su1,su1,Zm00001eb174590,1_starch_sugar,Isoamylase-type starch debranching enzyme SU1,Standard sweet corn (su1); also in su1/se1 'sugary enhanced' types,,MaizeGDB v5 annotation
+se1,se1,Zm00001eb115450,1_starch_sugar,Sugary enhancer1 (v4 Zm00001d007657),Raises sugar and tenderness in su1 background (se/SE types),Recessive se1 allele; gene identified by map-based cloning,Zhang et al. 2019 (R0053); Branch 2024 (R0549)
+sh1,sh1,Zm00001eb374090,1_starch_sugar,Sucrose synthase SH1 (endosperm),Shrunken1 kernels; novel Sh1 allele reported for sweet corn,,Zhang 2020 (R0054); Zhou 2026 (R0656)
+bt1,bt1,Zm00001eb235570,1_starch_sugar,Amyloplast ADP-glucose transporter,Brittle1 sweet types; starch accumulation,,MaizeGDB v5 annotation
+wx1,wx1,Zm00001eb378140,1_starch_sugar,Granule-bound starch synthase I (GBSSI),Waxy (glutinous) corn: amylopectin-only starch,"Chinese waxy alleles wx-D7 (30-bp del exon 7), wx-D10 (15-bp del exon 10), wx-124, wx-hAT (2,286-bp transposon in exon 3)",Luo et al. 2020 Sci Rep (R0286)
+ae1,ae1,Zm00001eb242610,1_starch_sugar,Starch branching enzyme IIb (SBEIIb),Amylose-extender; high-amylose and specialty starch; combined with wx/su1,,MaizeGDB v5 annotation
+du1,du1,Zm00001eb413290,1_starch_sugar,Starch synthase III,Dull endosperm; modifier of sweet/waxy kernel texture,,MaizeGDB v5 annotation
+su2,su2,Zm00001eb279740,1_starch_sugar,Starch synthase IIa,Sugary2; altered starch gelatinisation,,MaizeGDB v5 annotation
+sbe1,sbe1,Zm00001eb228530,1_starch_sugar,Starch branching enzyme I,Starch fine structure,,MaizeGDB v5 annotation
+zpu1,zpu1,Zm00001eb088740,1_starch_sugar,Pullulanase-type debranching enzyme,Starch degradation/structure; interacts with su1,,MaizeGDB v5 annotation
+sus1,sus1,Zm00001eb392880,1_starch_sugar,Sucrose synthase 1,Sucrose cleavage in developing kernel,,MaizeGDB v5 annotation
+mn1,mn1,Zm00001eb083790,1_starch_sugar,Cell-wall invertase INCW2 (miniature1),Kernel filling and seed weight,,MaizeGDB v5 annotation
+sweet4c,sweet4c,Zm00001eb236810,1_starch_sugar,SWEET hexose transporter 4c,Seed filling (sugar transport to endosperm),,MaizeGDB v5 annotation
+o2,o2,Zm00001eb301570,2_nutrition,bZIP transcription factor Opaque2,Quality-protein maize (QPM): higher lysine/tryptophan,K0326Y in this comparison is a QPM (o2-modified) line,MaizeGDB v5 annotation
+fl2,fl2,Zm00001eb170070,2_nutrition,22-kDa alpha-zein (floury2),Kernel protein/texture,,MaizeGDB v5 annotation
+o1,o1,Zm00001eb193160,2_nutrition,Myosin XI (opaque1),Kernel vitreousness,,MaizeGDB v5 annotation
+y1,y1,Zm00001eb271860,2_nutrition,Phytoene synthase PSY1,Yellow vs white endosperm (carotenoids),,MaizeGDB v5 annotation
+lcyE,lcyE,Zm00001eb357090,2_nutrition,Lycopene epsilon-cyclase (lyce1),Provitamin A biofortification,,MaizeGDB v5 annotation
+crtRB1,crtRB1,Zm00001eb428470,2_nutrition,Beta-carotene hydroxylase (hyd3),Provitamin A biofortification,,MaizeGDB v5 annotation
+vte4,vte4,Zm00001eb251860,2_nutrition,Gamma-tocopherol methyltransferase,Vitamin E (alpha-tocopherol),,MaizeGDB v5 annotation
+c1,c1,Zm00001eb373660,3_pigment,MYB regulator of anthocyanin (aleurone),Purple/coloured kernels,,MaizeGDB v5 annotation
+r1,r1,Zm00001eb429330,3_pigment,bHLH regulator of anthocyanin,Purple/coloured kernels and plant,,MaizeGDB v5 annotation
+pl1,pl1,Zm00001eb278680,3_pigment,MYB regulator (purple plant1),Purple plant/husk; purple corn,,MaizeGDB v5 annotation
+b1,b1,Zm00001eb074320,3_pigment,bHLH regulator (booster1),Plant anthocyanin,,MaizeGDB v5 annotation
+p1,p1,Zm00001eb014390,3_pigment,MYB regulator of phlobaphene (pericarp color1),Red pericarp/cob; tandem copies in B73,P1 expanded and down-regulated in popcorn (SP genome),Fang et al. 2025 (R0259)
+a1,a1,Zm00001eb159020,3_pigment,Dihydroflavonol reductase (anthocyaninless1),Anthocyanin; tightly linked to sh2 on chr3,a1-sh2 linkage 0.08 cM / 140 kb,Anirban et al. 2023 (R0002)
+a2,a2,Zm00001eb229190,3_pigment,Leucoanthocyanidin dioxygenase,Anthocyanin,,MaizeGDB v5 annotation
+c2,c2,Zm00001eb198030,3_pigment,Chalcone synthase (colorless2),Flavonoid/anthocyanin,,MaizeGDB v5 annotation
+bz1,bz1,Zm00001eb374230,3_pigment,UDP-glucose flavonoid 3-O-glucosyltransferase,Anthocyanin (bronze1),,MaizeGDB v5 annotation
+pr1,pr1,Zm00001eb245960,3_pigment,Flavonoid 3'-hydroxylase (red aleurone1),Purple vs red aleurone,,MaizeGDB v5 annotation
+in1,in1,Zm00001eb303250,3_pigment,Intensifier1,Anthocyanin intensity,,MaizeGDB v5 annotation
+tb1,tb1,Zm00001eb054440,4_plant_domestication,TCP transcription factor (teosinte branched1),Tillering/prolificacy; baby corn and multi-ear types,,MaizeGDB v5 annotation
+tga1,tga1,Zm00001eb175150,4_plant_domestication,SBP transcription factor,Naked kernel (domestication),,MaizeGDB v5 annotation
+d8,d8,Zm00001eb054480,4_plant_domestication,DELLA protein (dwarf8),Plant height/flowering,,MaizeGDB v5 annotation
+br2,br2,Zm00001eb038710,4_plant_domestication,ABCB1 auxin transporter (brachytic2),Semi-dwarf stature,,MaizeGDB v5 annotation
+d3,d3,Zm00001eb379120,4_plant_domestication,GA biosynthesis P450 (dwarf3),Plant height,,MaizeGDB v5 annotation
+ZmCCT,ZmCCT,Zm00001eb418700,4_plant_domestication,CCT-domain protein (cct1; v4 Zm00001d024909),Photoperiod sensitivity: tropical vs temperate adaptation,,MaizeGDB v5 annotation
+ZmRap2.7,ZmRap2.7,Zm00001eb355240,4_plant_domestication,AP2 transcription factor (rap2.7; Vgt1 upstream),Flowering time,,MaizeGDB v5 annotation
+ra1,ra1,Zm00001eb312340,4_plant_domestication,Zinc-finger TF (ramosa1),Inflorescence/ear branching,,MaizeGDB v5 annotation
+krn4,krn4,Zm00001eb199840,4_plant_domestication,Kernel row number QTL (krn4),Kernel row number,,MaizeGDB v5 annotation
+ub3,ub3,Zm00001eb199880,4_plant_domestication,SBP transcription factor (unbranched3),Kernel row number / tassel branching,,MaizeGDB v5 annotation
+ZmGa1,ZmGa1,Zm00001eb167600,4_plant_domestication,Pectin methylesterase (Ga1 male determinant),Unilateral cross-incompatibility (popcorn Ga1-S); seed purity of specialty corn,22 ZmGa1 copies in Strawberry Popcorn genome,Fang et al. 2025 (R0259)
+Htn1,Htn1,Zm00001eb360640,5_disease,Wall-associated receptor-like kinase,Northern corn leaf blight resistance,,MaizeGDB v5 annotation
+Ht1,Ht1,Zm00001eb110490,5_disease,LRR receptor-like protein,Northern corn leaf blight resistance,,MaizeGDB v5 annotation
+Rp1,Rp1,Zm00001eb405860,5_disease,NLR resistance gene cluster,Common rust resistance (important in sweet corn),,MaizeGDB v5 annotation
+Scmv1,Scmv1,Zm00001eb262910,5_disease,Atypical h-type thioredoxin (ZmTrxh),Sugarcane mosaic virus resistance,,MaizeGDB v5 annotation
+Scmv2,Scmv2,Zm00001eb137840,5_disease,Auxin-binding protein 1 (ZmABP1),Sugarcane mosaic virus resistance,,MaizeGDB v5 annotation

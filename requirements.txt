@@ -1,0 +1,12 @@
+# Python 3.13. scripts/ needs numpy, scipy and matplotlib; genome/scripts/genome_numbers.py needs pandas;
+# data/pipeline/ and the genome table builders also need the other packages.
+numpy==2.4.4
+scipy==1.17.1
+matplotlib==3.10.9
+matplotlib-venn==1.1.2
+pandas==3.0.2
+openpyxl==3.1.5
+xlrd==2.0.2
+networkx==3.6.1
+scikit-learn==1.8.0
+pillow==12.3.0

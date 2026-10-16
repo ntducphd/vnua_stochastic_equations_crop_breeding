@@ -1,0 +1,57 @@
+Worked examples for the review (worked_examples.py)
+python 3.13.15, numpy 2.4.4, scipy 1.17.1
+
+1. Fixation from x0 = 0.5: exact Wright-Fisher chain and diffusion (generations)
+scenario                                 Ne     s   4Nes |  Pfix_ex Pfix_dif |   T1_ex  T1_dif dif-ex |  SD_ex
+Population under selection (Ne = 200)   200  0.10   80.0 |  1.00000  1.00000 |   50.69   49.97  -0.73 |  14.19
+Population under selection (Ne = 50)     50  0.10   20.0 |  0.99993  0.99995 |   37.40   37.25  -0.15 |  15.61
+Small population under selection         30  0.05    6.0 |  0.94943  0.95257 |   53.08   53.82  +0.74 |  33.84
+Population improvement (yield QTL)      100  0.02    8.0 |  0.98137  0.98201 |  148.22  148.99  +0.77 |  85.24
+Base population (drift)                  50  0.00    0.0 |  0.50000  0.50000 |  136.60  138.63  +2.03 | 101.17
+Conservation line                        20  0.00    0.0 |  0.50000  0.50000 |   53.73   55.45  +1.72 |  40.14
+Small family (inbreeding)                10  0.05    2.0 |  0.72639  0.73106 |   24.52   25.86  +1.34 |  18.15
+Worked example (Ne = 100, s = 0.15)     100  0.15   60.0 |  1.00000  1.00000 |   32.18   31.48  -0.71 |   9.80
+Largest |P_fix diffusion - exact| over these rows: 0.0047 (Ne = 10, s = 0.05: 0.731 against 0.726).
+Largest |T1 diffusion - exact|: 2.03 generations (Ne = 50, s = 0.00).
+Neutral limit, Ne = 50: 4 Ne ln 2 = 138.63; the general integral at s = 1e-9 gives 138.63; exact chain 136.60.
+Neutral limit, Ne = 20: 4 Ne ln 2 = 55.45; the general integral at s = 1e-9 gives 55.45; exact chain 53.73.
+Worked example (Ne = 100, s = 0.15, x0 = 0.5): P_fix = 1.000000 (exact chain); conditional mean time to fixation 32.18 generations in the exact chain (SD 9.80), 31.48 from the diffusion integral, and 31.14 from the strong-selection approximation (ln(4 Ne s) + gamma)/s with 4 Ne s = 60.
+Check of the approximation at Ne = 10,000 (4 Ne s = 6,000, s = 0.15): integral 61.85, (ln(4 Ne s) + gamma)/s = 61.84.
+
+2. Branching process: establishment probability pi of one copy, offspring Poisson(1 + s)
+     s |       pi     2s   pi/2s |  u(1/2Ne) 100  u(1/2Ne) 1000
+  0.01 |  0.01974   0.02   0.987 |       0.02017        0.01980
+  0.02 |  0.03896   0.04   0.974 |       0.03922        0.03921
+  0.05 |  0.09370   0.10   0.937 |       0.09516        0.09516
+  0.10 |  0.17613   0.20   0.881 |       0.18127        0.18127
+  0.20 |  0.31370   0.40   0.784 |       0.32968        0.32968
+  0.50 |  0.58281   1.00   0.583 |       0.63212        0.63212
+For s = 0.01, pi = 0.0197 against 2s = 0.02 and u(1/(2Ne)) = 0.0202 (Ne = 100) and 0.0198 (Ne = 1,000); 2s overstates pi by 14% at s = 0.1 and 72% at s = 0.5.
+k independent copies at s = 0.05 (pi = 0.0937): establishment probability 1 - (1 - pi)^k
+   k = 1: 0.094; k = 5: 0.389; k = 10: 0.626; k = 20: 0.860
+   copies needed for a 50%, 90% and 95% chance that at least one establishes: 8, 24 and 31
+
+3. Replicates needed by a simulation study
+Worked example: the SD of the conditional fixation time is 9.80 generations (exact chain), so a standard error of 0.5 generation needs R = (SD / 0.5)^2 = 384.1, that is 385 runs that fix; with P_fix = 1.0000 that is also the number of runs.
+A fixation probability of 0.73 (small-family row) estimated with a standard error of 0.01 needs R = p (1 - p) / 0.01^2 = 1,971 runs.
+
+4. Monte Carlo check of the exact chain (monte_carlo_check.py)
+100000 replicates per scenario, x0 = 0.5, seed 20260926 (numpy default_rng, shared in the order below)
+scenario                                 Ne     s |  Pfix_MC  Pfix_ex |    T_MC    SE    T_ex   diff     z |  SD_MC  SD_ex
+Population under selection (Ne = 200)   200  0.10 |  1.00000  1.00000 |   50.74  0.05   50.69  +0.05  +1.1 |  14.25  14.19
+Population under selection (Ne = 50)     50  0.10 |  0.99992  0.99993 |   37.38  0.05   37.40  -0.01  -0.3 |  15.61  15.61
+Small population under selection         30  0.05 |  0.94924  0.94943 |   53.15  0.11   53.08  +0.07  +0.6 |  33.74  33.84
+Population improvement (yield QTL)      100  0.02 |  0.98113  0.98137 |  148.24  0.27  148.22  +0.02  +0.1 |  84.67  85.24
+Base population (drift)                  50  0.00 |  0.49692  0.50000 |  136.65  0.45  136.60  +0.05  +0.1 | 101.37 101.17
+Conservation line                        20  0.00 |  0.50031  0.50000 |   53.88  0.18   53.73  +0.15  +0.8 |  40.43  40.14
+Small family (inbreeding)                10  0.05 |  0.72658  0.72639 |   24.43  0.07   24.52  -0.09  -1.4 |  18.05  18.15
+Worked example (Ne = 100, s = 0.15)     100  0.15 |  1.00000  1.00000 |   32.23  0.03   32.18  +0.05  +1.5 |   9.84   9.80
+Largest |Monte Carlo - exact| conditional mean time: 0.15 generations (Conservation line), at most 1.5 standard errors in any scenario; largest |Monte Carlo - exact| P_fix: 0.0031.
+
+5. Further numbers quoted in Sections 3, 4 and 7
+Ne = 10, s = 0.05, x0 = 0.1: allele lost within ten generations with probability 0.6078, eventually 0.7930
+Ne = 50, s = 0.05, x0 = 0.1: allele lost within ten generations with probability 0.0950, eventually 0.3748
+Strong-selection asymptote at Ne = 200, s = 0.10: (ln 4Nes + gamma)/s = 49.6 generations
+Ne = 50, s = 0, x0 = 0.5: SD of the conditional fixation time 101.17; a standard error of 0.5 generation needs 40,945 runs that fix, 81,889 runs in all at P_fix = 0.50
+Haldane map function: r = 0.091 at 10 cM; a BC6 plant that carries the target still carries the donor allele at that locus with probability (1 - r)^6 = 0.565
+a1 at r = 0.0008 stays with sh2 through six backcrosses with probability (1 - r)^6 = 0.995

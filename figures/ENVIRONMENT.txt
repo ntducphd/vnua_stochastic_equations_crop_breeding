@@ -1,0 +1,6 @@
+generate_figures.py: R01_fig_drift_selection, R01_fig_wf_example, R01_fig_family_map
+python 3.13.15
+numpy 2.4.4
+scipy 1.17.1
+matplotlib 3.10.9
+random seed: 42 (Euler-Maruyama paths of R01_fig_wf_example a); every other panel is deterministic

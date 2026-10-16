@@ -1,0 +1,18 @@
+line,group,chrom,a1_start,a1_end,genes_in_order,yz1_x1_same_strand_as_a1,a1_to_yz1_kb,a1_to_x1_kb,a1_to_sh2_cds_kb,a1_to_sh2_far_end_kb,sh2_blocks,sh2_structure,sh2_source,interval_gaps,interval_gap_bp,sh2_gapfree_segment_kb,sh2_segment_bounded_by_gaps,assembly_support
+B73,Field corn (Temperate dent),chr3,221780077,221781506,a1-yz1-x1-sh2,True,12.0,44.7,110.6,116.2,1,collinear with B73,sh2 CDS 31-mer anchors,0,0,217.6,False,contiguous sequence
+Mo17,Field corn (Temperate dent),chr3,227034259,227035678,a1-yz1-x1-sh2,True,52.2,63.8,131.4,136.9,1,collinear with B73,sh2 CDS 31-mer anchors,0,0,238.3,False,contiguous sequence
+Ia453-sh2,Sweet corn (Supersweet (sh2-R)),Chr3,223872134,223874464,a1-yz1-x1-sh2,True,5.6,10.4,28.6,83.6,2,split; part inverted relative to B73,sh2 CDS 31-mer anchors,0,0,185.9,False,contiguous sequence
+Il14H,Sweet corn (Sugary (su1)),chr3,221952710,221954129,a1-yz1-x1-sh2,True,13.0,39.7,164.0,169.5,1,collinear with B73,sh2 CDS 31-mer anchors,0,0,270.9,False,contiguous sequence
+P39,Sweet corn (Sugary (su1)),chr3,221502645,221504061,a1-yz1-x1-sh2,True,52.2,63.8,131.6,137.1,1,collinear with B73,sh2 CDS 31-mer anchors,0,0,238.5,False,contiguous sequence
+HP301,Popcorn (Popcorn),chr3,224965793,224967227,a1-yz1-x1-sh2,True,14.4,47.0,124.6,130.2,1,collinear with B73,sh2 CDS 31-mer anchors,0,0,231.6,False,contiguous sequence
+K0326Y,Quality-protein maize (QPM (o2 with modifiers)),chr3,215781156,215782597,a1-yz1-x1-sh2,True,54.1,87.1,164.7,170.2,1,collinear with B73,sh2 CDS 31-mer anchors,0,0,271.7,False,contiguous sequence
+SK,Field corn (Tropical inbred),chr3,222494814,222496256,a1-yz1-x1-sh2,True,54.7,56.1,110.3,117.3,1,collinear with B73,sh2 CDS 31-mer anchors,0,0,218.7,False,contiguous sequence
+CML247,Field corn (Tropical inbred (CIMMYT)),chr3,226307155,226308576,a1-yz1-x1-sh2,True,6.1,33.2,157.3,162.8,1,collinear with B73,sh2 CDS 31-mer anchors,0,0,264.3,False,contiguous sequence
+Huangzaosi,"Chinese founder, TSPT",chr3,237526649,237528083,a1-yz1-x1-sh2,True,14.4,47.0,124.6,130.1,1,collinear with B73,sh2 CDS 31-mer anchors,0,0,186.9,False,contiguous sequence
+Dan340,"Chinese founder, LRC",chr3,225380999,225382433,a1-yz1-x1-sh2,True,6.1,18.1,3075.5,3081.1,1,collinear with B73,sh2 CDS 31-mer anchors,20,259287,43.6,True,interval contains assembly gaps; distance depends on scaffolding
+Ye478,"Chinese founder, PA",chr3,231893269,231894698,a1-yz1-x1-sh2,True,12.0,44.7,110.6,116.2,1,collinear with B73,sh2 CDS 31-mer anchors,0,0,217.6,False,contiguous sequence
+Chang7-2,"Chinese founder, TSPT",chr3,220937949,220939378,a1-yz1-x1-sh2,True,52.2,63.8,137.9,143.4,1,collinear with B73,sh2 CDS 31-mer anchors,1,499,83.7,False,interval contains assembly gaps; distance depends on scaffolding
+Zheng58,"Chinese founder, PA",chr3,225924141,225925575,a1-yz1-x1-sh2,True,6.1,18.1,96.9,102.4,1,collinear with B73,sh2 CDS 31-mer anchors,0,0,165.5,False,contiguous sequence
+Jing724,"Chinese founder, X-group",chr3,229384090,229385524,a1-yz1-x1-sh2,True,14.4,47.0,124.8,130.3,1,collinear with B73,sh2 CDS 31-mer anchors,0,0,231.7,False,contiguous sequence
+Jing92,"Chinese founder, TSPT",chr3,220939805,220941239,a1-yz1-x1-sh2,True,52.3,63.8,131.4,136.8,1,collinear with B73,sh2 CDS 31-mer anchors,0,0,238.3,False,contiguous sequence
+Xu178,"Chinese founder, PB",chr3,229894849,229896268,a1-yz1-x1-sh2,True,52.2,84.8,162.4,168.0,1,collinear with B73,sh2 CDS 31-mer anchors,0,0,269.4,False,contiguous sequence

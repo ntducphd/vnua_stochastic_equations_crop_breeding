@@ -1,0 +1,13 @@
+cff-version: 1.2.0
+message: "If you use this code or data, please cite the article."
+title: "Stochastic equations in crop breeding: code and data"
+authors:
+  - family-names: Nguyen
+    given-names: Trung Duc
+    orcid: "https://orcid.org/0000-0003-1225-2515"
+  - family-names: Nguyen
+    given-names: Thi Hoai Linh
+  - family-names: Ta
+    given-names: Viet Ton
+license: MIT
+repository-code: "https://github.com/ntducphd/vnua_stochastic_equations_crop_breeding"

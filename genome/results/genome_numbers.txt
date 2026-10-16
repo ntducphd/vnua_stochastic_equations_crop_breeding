@@ -1,0 +1,24 @@
+Genome numbers for the review (genome_numbers.py)
+
+1. Chromosome 4: reduction in expected heterozygosity of sweet corn relative to temperate field corn, 1 - He_sweet / He_field, per 1-Mb window (Hu et al. 2021 GBS, B73 v4)
+   a. chromosome 4, 40-160 Mb: median 44.3% (IQR 22.8% to 55.7%), 120 windows
+   b. windows centred within 20 Mb of su1 (chr4:43,110,569, B73 v4): median 37.7% (IQR 26.8% to 50.1%), 40 windows
+      windows centred within 10 Mb of su1 (chr4:43,110,569, B73 v4): median 32.5% (IQR 23.4% to 47.0%), 20 windows
+      windows centred within 40 Mb of su1 (chr4:43,110,569, B73 v4): median 38.0% (IQR 24.8% to 51.5%), 80 windows
+   c. all windows of the genome: median 9.5% (IQR -1.3% to 21.3%), 2,109 windows
+   Rank of the 40-160 Mb block among the 879 blocks of 120 consecutive 1-Mb windows (blocks with a window lacking data skipped; windows without data: chr9 window 75): its median 44.3% is the largest in the genome (shared by blocks starting at 40, 41, 42, 43, 44, 45, 46, 47, 48 Mb on chromosome 4); the largest on any other chromosome is 21.3% (chromosome 5, 71-191 Mb).
+
+2. a1-sh2 interval (a1 CDS end to sh2 CDS), assemblies with sh2 collinear with B73 and < 1 kb of assembly gap in the interval
+   15 assemblies: 96.9 kb (Zheng58) to 164.7 kb (K0326Y); median 131.4 kb
+   included: B73, Mo17, Il14H, P39, HP301, K0326Y, SK, CML247, Huangzaosi, Ye478, Chang7-2, Zheng58, Jing724, Jing92, Xu178
+   left out: Ia453-sh2 (split; part inverted relative to B73; 0 assembly gaps, 0 bp; distance 28.6 kb)
+   left out: Dan340 (collinear with B73; 20 assembly gaps, 259,287 bp; distance 3075.5 kb)
+   kept with a small gap: Chang7-2 (1 gap, 499 bp); without it the range is unchanged: yes
+
+3. Chromosomes of endosperm and linked genes (B73 RefGen_v5)
+   a1   chr3:221,779,777-221,781,603 (221.8 Mb)
+   sh2  chr3:221,891,853-221,903,345 (221.9 Mb)
+   bt2  chr4:61,578,268-61,585,232 (61.6 Mb)
+   su1  chr4:43,430,007-43,438,753 (43.4 Mb)
+   se1  chr2:236,333,383-236,334,275 (236.3 Mb)
+   wx1  chr9:25,126,804-25,130,688 (25.1 Mb)

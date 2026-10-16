@@ -1,0 +1,61 @@
+record_id,check_sample,F1,F2,F3,F4,F5,F6,plant,breeding,animal,human,microbe,note
+2-s2.0-85049853869,1,1,0,0,0,0,0,0,0,0,1,1,CME and finite state projection; stochastic simulations are SSA of the gene model (F1); data context yeast and human cells
+2-s2.0-84871915038,1,0,0,1,0,0,1,0,0,0,0,0,coalescent analysis; Wright-Fisher population and birth-death processes are context only; effects shown by coalescent simulation
+WOS:000287802800020,1,0,1,0,0,0,0,0,0,0,0,0,Wright-Fisher diffusions; the branching diffusion is a by-product of a Doob transform
+2-s2.0-84892738677,1,0,1,0,0,0,0,0,0,0,1,0,SDE network inference on human epithelial cells treated with gefitinib; no cancer cells studied
+2-s2.0-0020464013,1,0,1,0,0,0,0,0,0,0,0,0,
+2-s2.0-85042933697,1,1,0,0,0,0,0,0,0,0,0,0,PIDE approximation of the CME solved numerically; not stochastic simulation
+2-s2.0-84949530764,1,0,1,0,0,0,0,0,0,0,0,0,philosophy of biology: the Wright-Fisher model of drift is the object of analysis
+2-s2.0-0017013683,1,0,0,0,1,0,0,0,0,0,0,0,
+2-s2.0-0013338435,1,1,1,0,0,0,0,0,0,0,0,0,duality of the Wright-Fisher and Moran Markov chains (transition matrices)
+2-s2.0-0032931963,1,0,1,0,0,0,0,0,0,0,0,0,diffusion approximation; simulations only verify it
+2-s2.0-79953252832,1,0,0,0,1,0,0,0,0,0,1,1,branching process for HIV-1 in early infection; vaccines and PrEP
+2-s2.0-105036686047,1,0,0,0,1,0,0,0,0,1,0,0,branching process; salmonid genomes; simulation only validates
+2-s2.0-85047693499,1,0,0,0,1,0,0,0,0,0,0,0,
+2-s2.0-84873489193,1,1,1,0,0,0,0,1,0,0,0,1,master equation and its Kramers-Moyal (diffusion) expansion; crop pathogen epidemiology
+2-s2.0-84988458389,1,0,1,1,0,0,0,0,0,0,0,0,
+2-s2.0-0018029894,1,0,0,0,1,0,0,0,0,0,1,0,branching processes applied to Huntington's chorea and Becker's muscular dystrophy
+2-s2.0-84862694440,1,1,1,0,1,0,0,0,0,0,0,0,Brownian motion traits on a conditioned birth-death (branching) species tree
+2-s2.0-85205790300,1,0,0,0,0,0,0,1,1,0,0,0,"Arabidopsis neighbour effects; genomic prediction to choose genotype mixtures; Ising-type model, no stochastic process family"
+2-s2.0-84886578448,1,0,0,0,0,0,0,0,0,0,0,0,inverse Ising model of protein coevolution; no family
+2-s2.0-34447512608,1,0,1,0,0,0,0,0,0,0,0,0,
+2-s2.0-0034310132,1,0,1,0,0,0,0,0,0,0,0,0,
+2-s2.0-67349263845,1,0,0,0,1,0,0,0,0,0,0,0,
+2-s2.0-85082196837,1,1,0,0,0,0,0,0,0,0,0,0,
+2-s2.0-85034237568,1,1,1,0,0,0,0,0,0,0,0,0,individual-based model analysed via master equation and Fokker-Planck; Gillespie runs only verify
+2-s2.0-84916910740,1,0,0,0,0,0,0,0,0,0,0,0,review of Ising-rooted gene network models; no family
+2-s2.0-85052611627,1,0,1,0,0,0,0,0,0,0,0,0,Wright-Fisher and multidimensional diffusions; individual-based dynamics only as the rescaled origin
+2-s2.0-7644228465,1,0,1,0,0,0,0,0,0,1,0,0,red snapper mtDNA; tests against the neutral Wright-Fisher model
+2-s2.0-85168346633,1,0,0,1,1,0,0,0,0,0,0,0,genealogies of branching processes; Wright-Fisher model only motivates the branching approximation
+2-s2.0-84879120392,1,0,1,1,0,0,0,0,0,0,0,0,two-locus Wright-Fisher diffusion dual to the ancestral recombination graph; MCMC is a numerical method
+2-s2.0-84907515717,1,1,1,0,0,0,1,0,0,0,0,0,exact simulation of conditioned Wright-Fisher chains (simulation method)
+WOS:000307240500008,2,0,0,1,0,0,0,0,0,0,0,0,Cannings models in the domain of attraction of the Kingman coalescent; Wright-Fisher variants are examples only
+2-s2.0-77954810287,2,1,0,0,0,0,0,0,0,0,0,0,
+2-s2.0-39849089301,2,1,0,0,0,0,0,0,0,0,0,1,"master equation and linear noise approximation; lac operon (bacterial) example; robust-control view is analysis, not control design"
+2-s2.0-34848925447,2,0,1,1,0,0,0,0,0,0,0,0,fixation probability by a coalescent approach compared with diffusion limits; evolutionary (linear) game is not a decision model
+2-s2.0-1542411722,2,0,0,1,1,0,0,0,0,0,1,0,Tay-Sachs mutation in Ashkenazi Jews: coalescence times and a branching-process model
+2-s2.0-105043186475,2,1,1,0,0,0,0,0,0,0,0,0,Bernstein operator of a discrete Markov chain converging to the Wright-Fisher diffusion
+2-s2.0-85038816065,2,0,1,0,1,0,0,0,0,0,0,0,"evolutionary rescue: establishment of a migrant lineage, and a diffusion approximation"
+2-s2.0-84946034176,2,0,0,0,1,0,0,0,0,0,0,1,multitype branching process applied to tumorigenesis
+2-s2.0-85024111693,2,1,1,0,0,0,0,0,0,0,0,1,fixation in Moran and Wright-Fisher models; cancer and bacterial motivation
+2-s2.0-0019817516,2,0,1,0,0,0,0,0,0,0,0,0,
+2-s2.0-0027204186,2,0,1,0,0,0,0,0,0,0,0,0,
+2-s2.0-70349912265,2,0,1,1,0,0,0,0,0,0,0,0,diffusion approximation; coalescent argument used in the proof
+2-s2.0-85087553114,2,0,1,0,0,0,0,0,0,0,0,0,
+2-s2.0-84957064339,2,1,1,0,0,0,0,0,0,0,0,0,
+2-s2.0-84893847298,2,0,1,0,0,0,0,0,0,0,0,0,
+2-s2.0-0014575299,2,0,0,0,1,0,0,0,0,0,0,0,
+2-s2.0-84941236565,2,0,0,1,0,0,0,0,0,0,0,0,expected frequency spectrum under the standard neutral (coalescent) model; diffusion results are background
+2-s2.0-77955728073,2,0,1,0,0,0,1,0,0,0,0,0,individual-based and Wright-Fisher simulations of gene flow
+2-s2.0-85113329746,2,0,1,0,0,0,0,0,0,0,0,0,
+2-s2.0-85207011802,2,0,0,0,0,0,0,0,0,0,0,0,review of census and effective size; Wright-Fisher model is background; no family
+2-s2.0-85062644232,2,0,1,0,0,0,0,0,0,0,0,1,Wright-Fisher neutral theory applied to cancer cell populations
+2-s2.0-84889030303,2,0,1,0,0,0,0,0,0,0,0,0,
+2-s2.0-85109651990,2,0,0,0,1,0,0,0,0,0,1,1,multitype branching processes for viral bottlenecks; SEIR epidemiology
+2-s2.0-105014619821,2,0,0,1,0,0,0,0,0,0,0,0,coalescent sampling formula; Wright-Fisher model is the population setting
+2-s2.0-85130634694,2,0,1,0,0,0,1,0,0,0,1,0,Wright-Fisher diffusion for ancient polygenic scores (human genetics); simulations of directional selection
+2-s2.0-0022981907,2,0,0,0,0,0,0,0,0,0,0,0,deterministic equilibria of a group-selection model; diffusion results only discussed; no family
+2-s2.0-85118697245,2,1,0,0,0,0,0,0,0,0,0,0,
+WOS:000418458200001,2,0,1,0,0,0,1,0,0,1,0,0,forward-time Wright-Fisher simulation of the lionfish invasion
+2-s2.0-34548061302,2,0,1,1,1,0,0,0,0,0,0,0,genealogies during a sweep via a marked Yule (branching) tree; diffusion approximation keyword
+2-s2.0-85016414540,2,1,0,0,0,0,0,0,0,0,0,1,CME approximated by a PIDE; bacterial competence

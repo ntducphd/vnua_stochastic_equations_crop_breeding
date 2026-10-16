@@ -1,0 +1,9 @@
+__pycache__/
+*.pyc
+# database exports and files derived from them (not redistributable)
+data/raw/
+data/pipeline_output/
+# genome inputs and intermediates (downloaded or rebuilt)
+genome/data/raw/
+genome/results/intermediate/
+genome/results/figures/

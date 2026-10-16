@@ -1,0 +1,11 @@
+line,prefix,assembly,heterotic_group,group_source,in_core_set,notes
+B73,Zm00001eb,Zm-B73-REFERENCE-NAM-5.0,SS (Stiff Stalk),Wang et al. 2023 Nat Genet (R0050),yes,
+Mo17,Zm00014ba,Zm-Mo17-REFERENCE-CAU-2.0,NSS (Lancaster),Wang et al. 2023 Nat Genet (R0050),yes,T2T assembly
+Huangzaosi,Zm00095aa,Zm-Huangzaosi-REFERENCE-CAAS_FIL-1.0,TSPT (Tangsipingtou),Wang et al. 2023 Nat Genet (R0050),no,CAAS founder inbred line (FIL)
+Dan340,Zm00094aa,Zm-Dan340-REFERENCE-CAAS_FIL-1.0,LRC (LvDa Red Cob; clusters with NSS),Wang et al. 2023 Nat Genet (R0050),no,CAAS FIL
+Ye478,Zm00102aa,Zm-Ye478-REFERENCE-CAAS_FIL-1.0,PA,Wang et al. 2023 Nat Genet (R0050),no,CAAS FIL
+Chang7-2,Zm00093aa,Zm-Chang-7_2-REFERENCE-CAAS_FIL-1.0,TSPT (Tangsipingtou),Wang et al. 2023 Nat Genet (R0050),no,CAAS FIL
+Zheng58,Zm00103aa,Zm-Zheng58-REFERENCE-CAAS_FIL-1.0,PA,Wang et al. 2023 Nat Genet (R0050),no,"CAAS FIL; the MaizeGDB README of this folder wrongly names Ye478/Zm00102aa (template error); file names and the Pan-Zea config give Zm00103aa = Zheng58"
+Jing724,Zm00096aa,Zm-Jing724-REFERENCE-CAAS_FIL-1.0,X-group,Wang et al. 2023 Nat Genet (R0050),no,"CAAS FIL; also the background of sh2/su1/wx1/BADH2 editing for sweet, waxy and aromatic corn (Zhang 2021; Zhang 2026; Wang Yao 2026)"
+Jing92,Zm00097aa,Zm-Jing92-REFERENCE-CAAS_FIL-1.0,TSPT (Tangsipingtou),Wang et al. 2023 Nat Genet (R0050),no,CAAS FIL
+Xu178,Zm00101aa,Zm-Xu178-REFERENCE-CAAS_FIL-1.0,PB,Wang et al. 2023 Nat Genet (R0050),no,CAAS FIL; parent of Nongda108 (other parent not assembled)

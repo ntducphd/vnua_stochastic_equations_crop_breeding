@@ -1,0 +1,61 @@
+# Inputs read by 07_population_differentiation.py and 13_a1_sh2_interval.py, with the size and MD5 of the
+# files used for the tables in results/tables/ (rows of analysis_genome/data/raw/MANIFEST_md5.tsv, verified 2026-10-13).
+# source_url 'project:<path>' marks a file copied from the project's shared data folder; see README.md for its public source.
+path	bytes	md5	published_md5_check	source_url
+B73v5_to_B73v4.tsv	1183552	c420bc8f51f90e6da1160855901d81ff		https://download.maizegdb.org/Pan-genes/B73_gene_xref/B73v5_to_B73v4.tsv
+pan-zea.v4.pan-genes_table.tsv.gz	10191804	f18cadfaca8182fb4b752d7b568f63fb		https://download.maizegdb.org/Pan-genes/Pan-Zea/pan-zea.v4.pan-genes_table.tsv.gz
+Zm00001d.2.full_gene_data.txt.gz	1704935	900b7261a27142e96c8c5f29319c294b		https://download.maizegdb.org/Zm-B73-REFERENCE-GRAMENE-4.0/Zm-B73-REFERENCE-GRAMENE-4.0_Zm00001d.2.full_gene_data.txt.gz
+gff/Zm00001eb.gff3.gz	12251264	fc7fae1d0d079635b99a20e544cc2d66		https://download.maizegdb.org/Zm-B73-REFERENCE-NAM-5.0/Zm-B73-REFERENCE-NAM-5.0_Zm00001eb.1.gff3.gz
+genomes/Zm-B73-REFERENCE-NAM-5.0.md5	4370	65952cb2512936be5781054c01a33c0a		https://download.maizegdb.org/Zm-B73-REFERENCE-NAM-5.0/Zm-B73-REFERENCE-NAM-5.0.md5
+genomes/Zm-B73-REFERENCE-NAM-5.0.fa.gz	645548281	8efe28f60e4415df7d7870e448f96c09	OK	https://download.maizegdb.org/Zm-B73-REFERENCE-NAM-5.0/Zm-B73-REFERENCE-NAM-5.0.fa.gz
+gff/Zm00014ba.gff3.gz	6135099	6bc2309602cc557ca5dc20f3f87073a3		https://download.maizegdb.org/Zm-Mo17-REFERENCE-CAU-2.0/Zm-Mo17-REFERENCE-CAU-2.0_Zm00014ba.gff3.gz
+genomes/Zm-Mo17-REFERENCE-CAU-2.0.md5	1340	0724b2cd29364c927e27ce506feb3012		https://download.maizegdb.org/Zm-Mo17-REFERENCE-CAU-2.0/Zm-Mo17-REFERENCE-CAU-2.0.md5
+genomes/Zm-Mo17-REFERENCE-CAU-2.0.fa.gz	655205981	ef9daf1de9a8f7bdc20a4617857e1f7d	OK	https://download.maizegdb.org/Zm-Mo17-REFERENCE-CAU-2.0/Zm-Mo17-REFERENCE-CAU-2.0.fa.gz
+gff/Zm00045a.gff3.gz	7919670	d940076cb59618f3095f8c381ae44126		https://download.maizegdb.org/Zm-Ia453-REFERENCE-FL-1.0/Zm-Ia453-REFERENCE-FL-1.0_Zm00045a.1.gff3.gz
+genomes/Zm-Ia453-REFERENCE-FL-1.0.md5	1388	77ab024b67999b9ba82c899e7b081fcd		https://download.maizegdb.org/Zm-Ia453-REFERENCE-FL-1.0/Zm-Ia453-REFERENCE-FL-1.0.md5
+genomes/Zm-Ia453-REFERENCE-FL-1.0.fa.gz	680051754	34c90ccbd1d40f8824dae4b085804372	OK	https://download.maizegdb.org/Zm-Ia453-REFERENCE-FL-1.0/Zm-Ia453-REFERENCE-FL-1.0.fa.gz
+gff/Zm00028ab.gff3.gz	11947857	1902dfffb879db190df356404128a1d0		https://download.maizegdb.org/Zm-Il14H-REFERENCE-NAM-1.0/Zm-Il14H-REFERENCE-NAM-1.0_Zm00028ab.1.gff3.gz
+genomes/Zm-Il14H-REFERENCE-NAM-1.0.md5	3419	3aeb804c612c05ce436eeb8d619166a9		https://download.maizegdb.org/Zm-Il14H-REFERENCE-NAM-1.0/Zm-Il14H-REFERENCE-NAM-1.0.md5
+genomes/Zm-Il14H-REFERENCE-NAM-1.0.fa.gz	645696806	267f6b128f2920ee314b70cc45327bec	OK	https://download.maizegdb.org/Zm-Il14H-REFERENCE-NAM-1.0/Zm-Il14H-REFERENCE-NAM-1.0.fa.gz
+gff/Zm00040ab.gff3.gz	12164007	172c8b1398fdd2c74b6f75cd8f669365		https://download.maizegdb.org/Zm-P39-REFERENCE-NAM-1.0/Zm-P39-REFERENCE-NAM-1.0_Zm00040ab.1.gff3.gz
+genomes/Zm-P39-REFERENCE-NAM-1.0.md5	3689	43e3cde1905383f79e40994f79dd86a4		https://download.maizegdb.org/Zm-P39-REFERENCE-NAM-1.0/Zm-P39-REFERENCE-NAM-1.0.md5
+genomes/Zm-P39-REFERENCE-NAM-1.0.fa.gz	648099079	0b3acbb6c09743388656770ab939ce67	OK	https://download.maizegdb.org/Zm-P39-REFERENCE-NAM-1.0/Zm-P39-REFERENCE-NAM-1.0.fa.gz
+gff/Zm00027ab.gff3.gz	11950075	1d38e9769ff00bb6eae764c0efc8ca7f		https://download.maizegdb.org/Zm-HP301-REFERENCE-NAM-1.0/Zm-HP301-REFERENCE-NAM-1.0_Zm00027ab.1.gff3.gz
+genomes/Zm-HP301-REFERENCE-NAM-1.0.md5	3776	c814b5a5bce32b685c96eb3a3f26e1c6		https://download.maizegdb.org/Zm-HP301-REFERENCE-NAM-1.0/Zm-HP301-REFERENCE-NAM-1.0.md5
+genomes/Zm-HP301-REFERENCE-NAM-1.0.fa.gz	649378564	32dd58ee288806b3930035cd79251f90	OK	https://download.maizegdb.org/Zm-HP301-REFERENCE-NAM-1.0/Zm-HP301-REFERENCE-NAM-1.0.fa.gz
+gff/Zm00054a.gff3.gz	11575141	7bf61bf8a1947ee61deb5730852cd6b6		https://download.maizegdb.org/Zm-K0326Y-REFERENCE-SIPPE-1.0/Zm-K0326Y-REFERENCE-SIPPE-1.0_Zm00054a.1.gff3.gz
+genomes/Zm-K0326Y-REFERENCE-SIPPE-1.0.md5	2139	2b76a169b4e9d70576a318d364a45af6		https://download.maizegdb.org/Zm-K0326Y-REFERENCE-SIPPE-1.0/Zm-K0326Y-REFERENCE-SIPPE-1.0.md5
+genomes/Zm-K0326Y-REFERENCE-SIPPE-1.0.fa.gz	592143267	8019899b2fbaebccdb216f162d540cdd	OK	https://download.maizegdb.org/Zm-K0326Y-REFERENCE-SIPPE-1.0/Zm-K0326Y-REFERENCE-SIPPE-1.0.fa.gz
+gff/Zm00015a.gff3.gz	9105944	dcc182a733752c5f7280026d270034b4		https://download.maizegdb.org/Zm-SK-REFERENCE-YAN-1.0/Zm-SK-REFERENCE-YAN-1.0_Zm00015a.1.gff3.gz
+genomes/Zm-SK-REFERENCE-YAN-1.0.md5	1313	48ebeacaa140be7156144243df7791bd		https://download.maizegdb.org/Zm-SK-REFERENCE-YAN-1.0/Zm-SK-REFERENCE-YAN-1.0.md5
+genomes/Zm-SK-REFERENCE-YAN-1.0.fa.gz	590913999	f7c6c838e0cba481e8e66e335830ef9a	OK	https://download.maizegdb.org/Zm-SK-REFERENCE-YAN-1.0/Zm-SK-REFERENCE-YAN-1.0.fa.gz
+gff/Zm00023ab.gff3.gz	12032926	6dada2e4b38fe652508d80130af80a48		https://download.maizegdb.org/Zm-CML247-REFERENCE-NAM-1.0/Zm-CML247-REFERENCE-NAM-1.0_Zm00023ab.1.gff3.gz
+genomes/Zm-CML247-REFERENCE-NAM-1.0.md5	3108	9271fccee6864f6f25e2bd648a77cf2c		https://download.maizegdb.org/Zm-CML247-REFERENCE-NAM-1.0/Zm-CML247-REFERENCE-NAM-1.0.md5
+genomes/Zm-CML247-REFERENCE-NAM-1.0.fa.gz	666936986	5f656cf758a73a89fa035507d0653436	OK	https://download.maizegdb.org/Zm-CML247-REFERENCE-NAM-1.0/Zm-CML247-REFERENCE-NAM-1.0.fa.gz
+gff/Zm00095aa.gff3.gz	4549545	f081df97a4da7139c06329f8bf0625e7		https://download.maizegdb.org/Zm-Huangzaosi-REFERENCE-CAAS_FIL-1.0/Zm-Huangzaosi-REFERENCE-CAAS_FIL-1.0_Zm00095aa.1.gff3.gz
+genomes/Zm-Huangzaosi-REFERENCE-CAAS_FIL-1.0.md5	2372	1fef0cc6375286baa754bb32356b2d05		https://download.maizegdb.org/Zm-Huangzaosi-REFERENCE-CAAS_FIL-1.0/Zm-Huangzaosi-REFERENCE-CAAS_FIL-1.0.md5
+genomes/Zm-Huangzaosi-REFERENCE-CAAS_FIL-1.0.fa.gz	599223229	69332fd1d98e032271c603d844248842	OK	https://download.maizegdb.org/Zm-Huangzaosi-REFERENCE-CAAS_FIL-1.0/Zm-Huangzaosi-REFERENCE-CAAS_FIL-1.0.fa.gz
+gff/Zm00094aa.gff3.gz	4413384	c0fc9710e26858064c4f904feaa50c06		https://download.maizegdb.org/Zm-Dan340-REFERENCE-CAAS_FIL-1.0/Zm-Dan340-REFERENCE-CAAS_FIL-1.0_Zm00094aa.1.gff3.gz
+genomes/Zm-Dan340-REFERENCE-CAAS_FIL-1.0.md5	2228	b708b6dc1aa4fdd6109468f141ae1c12		https://download.maizegdb.org/Zm-Dan340-REFERENCE-CAAS_FIL-1.0/Zm-Dan340-REFERENCE-CAAS_FIL-1.0.md5
+genomes/Zm-Dan340-REFERENCE-CAAS_FIL-1.0.fa.gz	557817121	2fad35c350c4efa223320600b1703dbf	OK	https://download.maizegdb.org/Zm-Dan340-REFERENCE-CAAS_FIL-1.0/Zm-Dan340-REFERENCE-CAAS_FIL-1.0.fa.gz
+gff/Zm00102aa.gff3.gz	4560679	1e142ebc77deb8fc55126d6c49d3929d		https://download.maizegdb.org/Zm-Ye478-REFERENCE-CAAS_FIL-1.0/Zm-Ye478-REFERENCE-CAAS_FIL-1.0_Zm00102aa.1.gff3.gz
+genomes/Zm-Ye478-REFERENCE-CAAS_FIL-1.0.md5	2192	934ac2e10af72fc0c7d6d39e370e4f1a		https://download.maizegdb.org/Zm-Ye478-REFERENCE-CAAS_FIL-1.0/Zm-Ye478-REFERENCE-CAAS_FIL-1.0.md5
+genomes/Zm-Ye478-REFERENCE-CAAS_FIL-1.0.fa.gz	564772690	a158f90209590c30d69d39b67beb5837	OK	https://download.maizegdb.org/Zm-Ye478-REFERENCE-CAAS_FIL-1.0/Zm-Ye478-REFERENCE-CAAS_FIL-1.0.fa.gz
+gff/Zm00093aa.gff3.gz	4353184	1e4d13ff8eb3402dbac1d8de1c78848e		https://download.maizegdb.org/Zm-Chang-7_2-REFERENCE-CAAS_FIL-1.0/Zm-Chang-7_2-REFERENCE-CAAS_FIL-1.0_Zm00093aa.1.gff3.gz
+genomes/Zm-Chang-7_2-REFERENCE-CAAS_FIL-1.0.md5	1652	e6132ce46b414b7b946b3bfc43fa77df		https://download.maizegdb.org/Zm-Chang-7_2-REFERENCE-CAAS_FIL-1.0/Zm-Chang-7_2-REFERENCE-CAAS_FIL-1.0.md5
+genomes/Zm-Chang-7_2-REFERENCE-CAAS_FIL-1.0.fa.gz	570213888	5c9e3b6b6e25a66fb66e16f4738d571e	OK	https://download.maizegdb.org/Zm-Chang-7_2-REFERENCE-CAAS_FIL-1.0/Zm-Chang-7_2-REFERENCE-CAAS_FIL-1.0.fa.gz
+gff/Zm00103aa.gff3.gz	4572939	5b757f22823d4fce8c7e4a29ac0b6227		https://download.maizegdb.org/Zm-Zheng58-REFERENCE-CAAS_FIL-1.0/Zm-Zheng58-REFERENCE-CAAS_FIL-1.0_Zm00103aa.1.gff3.gz
+genomes/Zm-Zheng58-REFERENCE-CAAS_FIL-1.0.md5	2264	09aa819e9ba6cf1dd8fffc2ed274b171		https://download.maizegdb.org/Zm-Zheng58-REFERENCE-CAAS_FIL-1.0/Zm-Zheng58-REFERENCE-CAAS_FIL-1.0.md5
+genomes/Zm-Zheng58-REFERENCE-CAAS_FIL-1.0.fa.gz	577301173	e5655040b261364116bd9eb636d77c1e	OK	https://download.maizegdb.org/Zm-Zheng58-REFERENCE-CAAS_FIL-1.0/Zm-Zheng58-REFERENCE-CAAS_FIL-1.0.fa.gz
+gff/Zm00096aa.gff3.gz	4656721	55b1b13bb8bd50fb7131bbce095b8a94		https://download.maizegdb.org/Zm-Jing724-REFERENCE-CAAS_FIL-1.0/Zm-Jing724-REFERENCE-CAAS_FIL-1.0_Zm00096aa.1.gff3.gz
+genomes/Zm-Jing724-REFERENCE-CAAS_FIL-1.0.md5	2371	664f6693ac39a8786398bb0dd3d079b7		https://download.maizegdb.org/Zm-Jing724-REFERENCE-CAAS_FIL-1.0/Zm-Jing724-REFERENCE-CAAS_FIL-1.0.md5
+genomes/Zm-Jing724-REFERENCE-CAAS_FIL-1.0.fa.gz	588842805	92f284957429a1c8a4d171c022c67255	OK	https://download.maizegdb.org/Zm-Jing724-REFERENCE-CAAS_FIL-1.0/Zm-Jing724-REFERENCE-CAAS_FIL-1.0.fa.gz
+gff/Zm00097aa.gff3.gz	4590783	420a741ca388f0adcb4ba58091b999d4		https://download.maizegdb.org/Zm-Jing92-REFERENCE-CAAS_FIL-1.0/Zm-Jing92-REFERENCE-CAAS_FIL-1.0_Zm00097aa.1.gff3.gz
+genomes/Zm-Jing92-REFERENCE-CAAS_FIL-1.0.md5	2228	7c4441e62ff9d13a48d0b2bdc7c2a9d0		https://download.maizegdb.org/Zm-Jing92-REFERENCE-CAAS_FIL-1.0/Zm-Jing92-REFERENCE-CAAS_FIL-1.0.md5
+genomes/Zm-Jing92-REFERENCE-CAAS_FIL-1.0.fa.gz	591098861	a291773566a6bbafd529d8b85ae7cc3d	OK	https://download.maizegdb.org/Zm-Jing92-REFERENCE-CAAS_FIL-1.0/Zm-Jing92-REFERENCE-CAAS_FIL-1.0.fa.gz
+gff/Zm00101aa.gff3.gz	4461979	3c700cc45955c4f4d6030cf3ea2c998a		https://download.maizegdb.org/Zm-Xu178-REFERENCE-CAAS_FIL-1.0/Zm-Xu178-REFERENCE-CAAS_FIL-1.0_Zm00101aa.1.gff3.gz
+genomes/Zm-Xu178-REFERENCE-CAAS_FIL-1.0.md5	1580	b124f4bd25c79a9dc5d473722bb72b41		https://download.maizegdb.org/Zm-Xu178-REFERENCE-CAAS_FIL-1.0/Zm-Xu178-REFERENCE-CAAS_FIL-1.0.md5
+genomes/Zm-Xu178-REFERENCE-CAAS_FIL-1.0.fa.gz	570234730	0b3f6960924ee32ea3c2ea94cb2a3569	OK	https://download.maizegdb.org/Zm-Xu178-REFERENCE-CAAS_FIL-1.0/Zm-Xu178-REFERENCE-CAAS_FIL-1.0.fa.gz
+popgen/Hu2021_noSeed_denovo_publicSweet.vcf.gz	1167444230	9aee755f38f1543c983b6aaf9421047d		project:data/Hu2021/data/noSeed_denovo_publicSweet.vcf.gz
+popgen/Hu2021_SupplementaryData4_groups.xlsx	150516	60778b21cd552deccf54d8279eee4dc9		project:data/Hu2021/41467_2021_21380_MOESM7_ESM.xlsx
+popgen/Qu2026_supplementary_tables.xlsx	4962162	ebcc5aa65bc05b80d1c6aeba00c2df25		project:data/Qu2026_5KSNPArray/data/plants-4242273-supplementary.xlsx
