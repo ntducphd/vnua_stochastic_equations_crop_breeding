@@ -279,27 +279,29 @@ def fig_wf_example():
 # R01_fig_family_map
 # ---------------------------------------------------------------------------------------------
 # Each family: title, equations or models (regular), what it answers in breeding (italic).
-# Colours follow the family colours of the evidence map (13_evidence_map.py, fig_style.CYCLE order):
-# master equations blue, diffusion vermilion, branching orange, control purple, simulation sky blue.
+# Warm Nature palette, colour by role: the four analytical families light peach with an orange rule, the
+# numerical counterpart (simulation) grey, the breeding answers in the accent red, text and links near-black.
+NAT = {"accent": "#E64B35", "edge": "#E9966A", "fill": "#FBE6DA",
+       "grey_edge": "#AAA9A5", "grey_fill": "#EDEDEB", "ink": "#262626"}
 FAMILIES = [
-    ("Master equations and Markov chains", OI["blue"],
+    ("Master equations and Markov chains", "family",
      ["Wright–Fisher and Moran chains; selfing and doubled-haploid",
       "chains; chemical master equation"],
      ["Exact finite-population probabilities"]),
-    ("Diffusion approximations", OI["vermilion"],
+    ("Diffusion approximations", "family",
      ["Wright–Fisher SDE; Fokker–Planck (forward) and",
       "Kolmogorov (backward) equations"],
      ["Fixation probabilities, absorption times, response and its spread"]),
-    ("Branching processes", OI["orange"],
+    ("Branching processes", "family",
      ["Rare alleles, edited events and introgressed segments",
       "while they are rare"],
      [r"Establishment probability $\pi\;\approx\;2s$"]),
-    ("Stochastic optimal control", OI["purple"],
+    ("Stochastic optimal control", "family",
      ["Bellman equation in discrete generations;",
       "HJB equation in the diffusion limit"],
      ["Multi-generation selection, mating and resource allocation"]),
 ]
-SIMULATION = (["Stochastic simulation", "of programmes"], OI["sky"],
+SIMULATION = (["Stochastic simulation", "of programmes"], "simulation",
               ["Individual-based forward", "simulation; numerical", "counterpart of all four"],
               ["Whole-programme designs", "that have no closed form"])
 
@@ -312,21 +314,24 @@ def _tint(colour, f=0.12):
     return (1 - f + f * r, 1 - f + f * g, 1 - f + f * b)
 
 
-def _box(ax, x, y, w, h, colour, title, body, answers):
-    """Rounded box with a bold title, regular body lines and italic answer lines, centred."""
-    ax.add_patch(FancyBboxPatch((x, y), w, h, boxstyle="round,pad=0,rounding_size=1.5",
-                                facecolor=_tint(colour), edgecolor=colour, linewidth=0.9))
+def _box(ax, x, y, w, h, role, title, body, answers):
+    """Square box with a bold title, regular body lines and italic answer lines (accent colour), centred.
+    role "family" (analytical) or "simulation" (numerical) sets the fill and edge."""
+    face, edge = ((NAT["fill"], NAT["edge"]) if role == "family" else (NAT["grey_fill"], NAT["grey_edge"]))
+    ax.add_patch(FancyBboxPatch((x, y), w, h, boxstyle="square,pad=0",
+                                facecolor=face, edgecolor=edge, linewidth=0.6))
     lines = [(t, "bold") for t in title] + [(t, "normal") for t in body] + [(t, "italic") for t in answers]
     n = len(lines)
     y_first = y + h / 2 + (n - 1) * LINE / 2
     texts = []
     for k, (txt, style) in enumerate(lines):
-        kw = {"fontweight": "bold"} if style == "bold" else ({"fontstyle": "italic"} if style == "italic" else {})
+        kw = ({"fontweight": "bold", "color": NAT["ink"]} if style == "bold" else
+              ({"fontstyle": "italic", "color": NAT["accent"]} if style == "italic" else {"color": NAT["ink"]}))
         texts.append(ax.text(x + w / 2, y_first - k * LINE, txt, ha="center", va="center", **kw))
     return texts
 
 
-def _arrow(ax, p0, p1, arrows, colour=INK):
+def _arrow(ax, p0, p1, arrows, colour=NAT["ink"]):
     """Straight arrow from p0 to p1 (mm); its end points are added to `arrows` for check_layout."""
     ax.add_patch(FancyArrowPatch(p0, p1, arrowstyle="-|>", mutation_scale=7, linewidth=0.8, color=colour,
                                  shrinkA=0, shrinkB=0, joinstyle="miter", capstyle="butt"))
@@ -412,7 +417,7 @@ def fig_family_map():
     xm = x0 + w / 2
     arrows = []
     # arrow labels upright; italic is kept for what each family answers
-    lab = {"ha": "left", "va": "center", "color": INK}
+    lab = {"ha": "left", "va": "center", "color": NAT["ink"]}
 
     # chains -> diffusion
     _arrow(ax, (xm, A[0]), (xm, B[1]), arrows)
@@ -425,8 +430,8 @@ def fig_family_map():
 
     # chains and diffusion -> control: a bus along the left edge
     xb = 4.0
-    ax.plot([x0, xb, xb], [yA, yA, yD], color=INK, lw=0.8, solid_joinstyle="miter")
-    ax.plot([x0, xb], [yB, yB], color=INK, lw=0.8)
+    ax.plot([x0, xb, xb], [yA, yA, yD], color=NAT["ink"], lw=0.8, solid_joinstyle="miter")
+    ax.plot([x0, xb], [yB, yB], color=NAT["ink"], lw=0.8)
     _arrow(ax, (xb, yD), (x0, yD), arrows)
     ax.text(xb + 2, (C[0] + D[1]) / 2, "transition law of a chain or a diffusion", **lab)
 
@@ -434,7 +439,7 @@ def fig_family_map():
     xs = x0 + w + 9.0
     ws = W - 1.0 - xs
     for ym in mids:
-        _arrow(ax, (x0 + w, ym), (xs, ym), arrows, colour=GREY)
+        _arrow(ax, (x0 + w, ym), (xs, ym), arrows, colour=NAT["grey_edge"])
     title, colour, body, answers = SIMULATION
     ys, hs = D[0], A[1] - D[0]
     for t in _box(ax, xs, ys, ws, hs, colour, title, body, answers):
