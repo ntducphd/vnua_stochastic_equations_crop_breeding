@@ -1,0 +1,51 @@
+﻿check_id,doi,title,reader_decision,reader_reason,rules_decision
+3,10.1515/rnam-2015-0004,On evolution of solution times for the chemical master equation of the enzymatic futile cycle,Maybe,,Maybe
+7,10.1534/genetics.114.162883,"Birth, Death, and Diversification of Mobile Promoters in Prokaryotes",Include,,Maybe
+13,10.1534/genetics.112.140756,Establishment of new mutations in changing environments,Include,,Include
+14,,SOME APPLICATIONS OF MULTIPLE-TYPE BRANCHING PROCESSES IN POPULATION GENETICS,Maybe,,Maybe
+15,10.1371/journal.pcbi.1006784,Multi-modality in gene regulatory networks with slow promoter kinetics,Include,,Include
+17,10.1007/s00285-021-01549-7,Analytic solutions for stochastic hybrid models of gene regulatory networks,Include,,Include
+21,10.1017/S0016672399003730,Poisson distribution of male mating success in laboratory populations of Drosophila melanogaster,Exclude,,Include
+25,10.1016/j.jhevol.2009.05.015,Cladistic analyses of behavioural variation in wild Pan troglodytes: exploring the chimpanzee culture hypothesis,Exclude,,Exclude
+27,10.1016/j.apnum.2008.01.004,Adaptive solution of the master equation in low dimensions,Exclude,,Maybe
+29,10.1016/j.tpb.2011.10.002,Effects of demographic structure on key properties of stochastic density-independent population dynamics,Exclude,,Maybe
+31,10.1093/genetics/iyad092,Self-contained Beta-with-Spikes approximation for inference under a Wright-Fisher model,Include,,Maybe
+32,10.1016/j.tpb.2017.12.008,On the decidability of population size histories from finite allele frequency spectra,Include,,Include
+33,10.1089/cmb.2018.0083,Large-Scale Simulations of Bacterial Populations Over Complex Networks,Include,,Exclude
+34,10.1137/25M176581X,Optimal Survival Strategies for Diffusive Flows: A Schrödinger Bridge Approach to Unbalanced Transport,Exclude,,Exclude
+36,10.1239/aap/1418396241,The Λ-Fleming-Viot process and a connection with Wright-Fisher diffusion,Include,,Include
+38,10.1534/genetics.107.085332,Exploring population genetic models with recombination using efficient forward-time simulations,Include,,Include
+39,10.3934/dcdsb.2012.17.775,"Fragmentation and monomer lengthening of rod-like polymers, a relevant model for prion proliferation",Exclude,,Exclude
+43,10.1007/s12064-016-0224-z,Neural model of gene regulatory network: a survey on supportive meta-heuristics,Exclude,,Exclude
+44,10.1016/j.physa.2017.03.017,The impact of randomness on the distribution of wealth: Some economic aspects of the Wright–Fisher diffusion process,Exclude,,Exclude
+46,10.1007/s00285-009-0308-1,"Asymptotic behavior of a Moran model with mutations, drift and recombination among multiple loci",Include,,Include
+53,10.1038/s41598-017-12239-0,Allele Age under Non-Classical Assumptions is Clarified by an Exact Computational Markov Chain Approach,Include,,Include
+54,10.1038/s41437-021-00493-y,Inferring the distribution of fitness effects in patient-sampled and experimental virus populations: two case studies,Include,,Maybe
+55,10.1353/lan.2019.0032,Birth of a contact language did not favor simplification,Exclude,,Exclude
+56,10.1002/bimj.4710370113,A Stochastic Model for Surname Evolution,Exclude,,Exclude
+57,10.1371/journal.pcbi.1013438,A history-dependent approach for accurate initial condition estimation in epidemic models,Exclude,,Exclude
+58,10.1239/jap/1445543852,A multitype infinite-allele branching process with applications to cancer evolution,Include,,Include
+59,10.1103/PhysRevE.63.061904,Phase transition in a spatial Lotka-Volterra model,Maybe,,Exclude
+61,10.1093/nar/gkr1073,The allele distribution in next-generation sequencing data sets is accurately described as the result of a stochastic branching process,Include,,Include
+64,10.1534/genetics.110.115030,Some consequences of demographic stochasticity in population genetics,Include,,Include
+65,10.1146/annurev-linguistics-031422-123959,Population Size and Language Change: An Evolutionary Perspective,Exclude,,Exclude
+66,10.1007/s10519-010-9376-7,On the sources of the height-intelligence correlation: New insights from a bivariate ACE model with assortative mating,Maybe,,Maybe
+72,10.1073/pnas.2410324121,Microevolutionary change in wild stickleback: Using integrative time- series data to infer responses to selection,Maybe,,Maybe
+73,10.1214/10-AAP725,Analysis of market weights under volatility-stabilized market models,Exclude,,Exclude
+74,10.1103/PhysRevE.66.061908,Systematic derivation of reaction-diffusion equations with distributed delays and relations to fractional reaction-diffusion equations and hyperbolic transport equations: Application to the theory of Neolithic transition,Exclude,,Exclude
+75,10.1063/1.4892838,Validity conditions for moment closure approximations in stochastic chemical kinetics,Maybe,,Maybe
+76,10.1111/biom.12352,"Likelihood-based inference for discretely observed birth-death-shift processes, with applications to evolution of mobile genetic elements",Include,,Maybe
+77,10.2307/3318611,Deterministic and stochastic models for coalescence (aggregation and coagulation): A review of the mean-field theory for probabilists,Exclude,,Exclude
+78,10.1098/rsif.2018.0967,Accuracy of parameter estimation for auto-regulatory transcriptional feedback loops from noisy data,Include,,Include
+79,10.1534/genetics.105.044750,The effect of antagonistic pleiotropy on the estimation of the average coefficient of dominance of deleterious mutations,Include,,Include
+81,10.1088/1742-5468/2007/09/P09017,A field theoretic approach to master equations and a variational method beyond the Poisson ansatz,Maybe,,Maybe
+83,10.1111/biom.12152,Inference for reaction networks using the linear noise approximation,Maybe,,Exclude
+85,10.1098/rspb.2009.1513,Words as alleles: Connecting language evolution with Bayesian learners to models of genetic drift,Exclude,,Maybe
+87,10.1111/j.1558-5646.1998.tb02235.x,Perspective: The theories of fisher and wright in the context of metapopulations: When nature does many small experiments,Include,,Include
+90,10.1016/j.jtbi.2016.04.021,An informational transition in conditioned Markov chains: Applied to genetics and evolution,Include,,Include
+91,10.1063/1.2743613,Content-based networks: A pedagogical overview,Exclude,,Maybe
+92,10.1016/j.biosystems.2014.09.007,Toy models for macroevolutionary patterns and trends,Include,,Include
+93,10.1007/s10543-007-0150-z,Numerical method for coupling the macro and meso scales in stochastic chemical kinetics,Maybe,,Maybe
+94,10.1534/genetics.115.175265,Transition densities and sample frequency spectra of diffusion processes with selection and variable population size,Include,,Include
+96,10.1214/11-AAP824,Population genetics of neutral mutations in exponentially growing cancer cell populations,Include,,Include
+100,10.1239/jap/1363784437,Duality between the two-locus wright-fisher diffusion model and the ancestral process with recombination,Include,,Include
