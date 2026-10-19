@@ -3,6 +3,8 @@ __pycache__/
 # database exports and files derived from them (not redistributable)
 data/raw/
 data/pipeline_output/
+# blinded screening-check sheet (holds publisher abstracts); the scored labels go to data/deposit/
+data/check/
 # genome inputs and intermediates (downloaded or rebuilt)
 genome/data/raw/
 genome/results/intermediate/

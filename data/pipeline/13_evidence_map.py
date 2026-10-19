@@ -281,12 +281,14 @@ def period(y):
 # Hand check
 # ---------------------------------------------------------------------------------------------------------------
 def hand_check(retained, flags):
+    # The two hand-check samples are fixed by record_id: they were drawn (seeds 1 and 2) from the records retained
+    # by the screening of 2026-07, and are scored here as stored, so that a later change of the retained set does
+    # not redraw them. A labelled record that the current screening no longer retains is reported and left out.
     labels = pd.read_csv(HANDCHECK_PATH, encoding="utf-8")
-    draw1 = retained.sample(n=30, random_state=1)
-    draw2 = retained.drop(index=draw1.index).sample(n=30, random_state=2)
-    for k, draw in ((1, draw1), (2, draw2)):
-        assert set(labels.loc[labels["check_sample"] == k, "record_id"]) == set(draw["record_id"]), \
-            f"hand-check file does not match the seed-{k} draw"
+    gone = sorted(set(labels["record_id"]) - set(retained["record_id"]))
+    if gone:
+        print(f"hand-check records not retained by the current screening (left out): {', '.join(gone)}")
+    labels = labels[labels["record_id"].isin(retained["record_id"])].copy()
     labels["no_family"] = (labels[FAM].sum(axis=1) == 0).astype(int)
     labels["none"] = (labels[list(DOMAINS)].sum(axis=1) == 0).astype(int)
     rules = flags.set_index("record_id")

@@ -1,0 +1,318 @@
+# Screening rules for title-and-abstract screening (read by pipeline/02_screen_records.py).
+#
+# Each term list implements one criterion of ../protocol/eligibility_criteria.md. Terms are matched in lower case
+# on whole words; a trailing * matches any word ending ("genom*" matches genome, genomes, genomic). Abbreviations
+# under `case_sensitive` are matched exactly as written. Phrases listed under `mask` are removed before matching,
+# so that a word used in another sense (a genetic algorithm, the coalescence of particles) does not count.
+# Change a list only together with `version`; the screening output records this file's SHA-256.
+
+version: "1.2 (2026-10-19)"
+
+fields:            # weight of a hit by field; keywords are author keywords plus Scopus Index Keywords
+  title: 2
+  keywords: 2
+  abstract: 1
+
+mask_off_domain:   # removed before matching and counted as off-domain evidence (E1, E2): computing senses
+  - genetic algorithm*
+  - evolutionary algorithm*
+  - evolutionary computation
+  - evolutionary optimi*
+  - genetic programming
+  - gene expression programming
+  - particle swarm*
+  - large language model*
+  - language model*
+mask:              # removed before matching (other senses of genetics or model words)
+  - time evolution
+  - evolution equation*
+  - evolution operator*
+  - evolution of the system
+  - temporal evolution
+  - hereditary effect*
+  - hereditary system*
+  - systems with heredity
+  - coalescence
+  - coalescing particle*
+  - branching morphogenesis
+  - branching structure*
+
+# I3: a stochastic model is developed or applied
+stochastic_strong:
+  - wright-fisher
+  - wright fisher
+  - moran model*
+  - moran process*
+  - coalescent*
+  - master equation*
+  - fokker-planck
+  - kolmogorov forward
+  - kolmogorov backward
+  - forward kolmogorov
+  - backward kolmogorov
+  - diffusion approximation*
+  - diffusion process*
+  - diffusion limit*
+  - diffusion operator*
+  - diffusion equation*
+  - kimura diffusion
+  - kolmogorov equation*
+  - forward-in-time
+  - stochastic hybrid
+  - branching process*
+  - galton-watson
+  - birth-death process*
+  - birth and death process*
+  - stochastic differential equation*
+  - stochastic partial differential equation*
+  - langevin
+  - ornstein-uhlenbeck
+  - brownian motion
+  - random walk*
+  - gillespie
+  - stochastic simulation*
+  - stochastic model*
+  - stochastic process*
+  - stochastic dynamic*
+  - stochastic gene expression
+  - stochastic switching
+  - linear noise approximation
+  - van kampen
+  - moment closure
+  - markov chain*
+  - markov process*
+  - markov model*
+  - poisson process*
+  - point process*
+  - hamilton-jacobi-bellman
+  - stochastic optimal control
+  - stochastic control
+  - mean-field game*
+  - mean field game*
+  - ising
+  - potts model*
+  - score-based
+  - neural sde*
+  - genetic drift
+  - random drift
+  - fixation probabilit*
+  - probability of fixation
+  - gene expression noise
+  - intrinsic noise
+  - extrinsic noise
+stochastic_weak:
+  - stochastic*
+  - random*
+  - noise
+  - noisy
+  - fluctuation*
+  - probabilistic
+  - probability
+  - monte carlo
+  - drift
+  - simulation*
+  - simulated
+case_sensitive_stochastic:
+  - SDE
+  - SDEs
+  - CME
+  - SSA
+  - HJB
+
+# I4: genetics, evolution, breeding or gene-regulatory dynamics is the main subject
+domain_strong:
+  - population genetic*
+  - quantitative genetic*
+  - evolutionary genetic*
+  - molecular evolution
+  - evolutionary biology
+  - allele*
+  - genetic drift
+  - fixation probabilit*
+  - probability of fixation
+  - selection coefficient*
+  - natural selection
+  - mutation*
+  - mutant*
+  - recombination
+  - linkage disequilibrium
+  - haplotype*
+  - heterozygo*
+  - homozygo*
+  - inbreeding
+  - pedigree*
+  - breeding value*
+  - heritabilit*
+  - quantitative trait*
+  - genomic selection
+  - genomic prediction
+  - plant breeding
+  - animal breeding
+  - crop*
+  - cultivar*
+  - genotype*
+  - genome*
+  - genomic*
+  - gene regulatory network*
+  - gene network*
+  - genetic network*
+  - gene circuit*
+  - genetic circuit*
+  - gene expression
+  - transcription*
+  - transcript*
+  - promoter*
+  - operon*
+  - mrna*
+  - microrna*
+  - protein expression
+  - toggle switch
+  - dna
+  - phylogen*
+  - speciation
+  - effective population size
+  - introgression
+  - gene flow
+  - admixture
+  - ancestral
+  - phylodynamic*
+  - site frequency spectrum
+  - neutral theory
+  - kimura
+  - wright-fisher
+  - wright fisher
+  - moran model*
+  - coalescent*
+  - snp*
+  - polymorphism*
+  - locus
+  - loci
+  - epistasis
+  - dominance
+  - fitness
+  - heredit*
+  - inherit*
+case_sensitive_domain:
+  - QTL
+  - QTLs
+  - GWAS
+  - GRN
+  - GRNs
+  - SNP
+  - SNPs
+  - DNA
+  - RNA
+# I4 / E1: model names that other fields borrow from population genetics. They count as domain evidence,
+# but not as evidence that the biological subject outweighs an off-domain subject.
+domain_model_terms:
+  - wright-fisher
+  - wright fisher
+  - moran model*
+  - coalescent*
+  - kimura
+  - population genetic*
+  - genetic drift
+  - fixation probabilit*
+  - probability of fixation
+domain_weak:           # biological context that supports, but alone does not establish, the scope
+  - gene*
+  - genetic*
+  - evolution*
+  - evolutionary
+  - population*
+  - selection
+  - breeding
+  - cell*
+  - protein*
+  - species
+  - biolog*
+  - biochemical
+  - chemical kinetics
+  - reaction network*
+
+# E1: the stochastic model is applied outside genetics, evolution, breeding and gene regulation.
+# Subject terms name another field; one in the title, with no strong domain term there, excludes the record.
+off_domain_subject:
+  - language*
+  - linguistic*
+  - word frequenc*
+  - cultural
+  - opinion*
+  - econom*
+  - financ*
+  - market*
+  - portfolio*
+  - wealth
+  - stock market*
+  - stock price*
+  - option pricing
+  - quantum
+  - nmr
+  - spectroscop*
+  - astrochemistry
+  - polymer*
+  - nanocluster*
+  - coagulation
+  - aggregation of particles
+  - material*
+  - surname*
+  - community detection
+  - traffic
+  - wireless
+  - power grid
+  - supply chain
+  - robot*
+  - image processing
+  - image segmentation
+  - computer vision
+  - hardware
+  - random number generator*
+  - schema
+  - schemata
+  - predator-prey
+  - lotka-volterra
+  - turbulen*
+  - plasma
+  - semiconductor*
+  - seismic
+  - archaeolog*
+  - neolithic
+# Context terms also occur in genetics records (epidemiology with population genetics is in scope); they count
+# at half weight and never exclude a record on their own.
+off_domain_context:
+  - epidemic*
+  - epidemiolog*
+  - infection*
+  - covid*
+  - sars-cov*
+  - pandemic*
+  - social
+  - culture
+  - climate
+  - hydrolog*
+  - fluid*
+  - image*
+off_domain_context_weight: 0.5
+
+# E6: document types that are not substantive articles (matched against the document type field)
+excluded_document_types:
+  - erratum
+  - correction
+  - retraction
+  - retracted
+  - editorial
+  - note
+  - letter
+  - meeting abstract
+  - conference abstract
+
+min_abstract_words: 50
+
+# Decision levels (see 02_screen_records.py for how they combine)
+levels:
+  domain_strong_for_include: 2      # weighted strong-domain score that establishes the scope (I4)
+  domain_weak_support: 2            # weak terms that, with one strong term and a named model, establish it
+  domain_weak_alone: 3              # weak terms that, with a named model and no off-domain term, establish it
+  off_domain_dominates: 2           # off-domain score at least this, and not below the biological domain score, excludes (E1)
+  off_domain_keeps_maybe: 4         # ...unless the biological domain score reaches this: then Maybe
+  population_genetics_without_model: 6   # biological domain score at which a record with no stochastic term is Maybe, not Exclude

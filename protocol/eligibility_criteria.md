@@ -41,8 +41,9 @@ applications*.
 
 ## Screening
 
-A rule-based classifier (`data/pipeline/02_ai_screening.py`) suggested a decision and a reason for each
-record. An AI assistant (Claude, Anthropic) confirmed or overrode each suggestion at the first author's
-instruction, and the first author takes responsibility for the decisions. Full texts were not assessed.
-Decisions are in `data/deposit/screening_decisions.csv`; the changed suggestions and their reasons are in
-`data/deposit/screening_decisions_ledger.csv`.
+The criteria are applied by explicit rules: `data/pipeline/screening_rules.yaml` holds the term lists and
+thresholds for criteria I3, I4, I5, E1, E2, E3, E5 and E6, and `data/pipeline/02_screen_records.py` gives each
+record a decision, a reason, the rule that decided it and the matched terms. Records with too little evidence
+either way are classed as uncertain (Maybe). A stratified random sample of 100 records is read blind to the rules'
+decisions (`data/pipeline/03_check_screening.py`). Full texts were not assessed. Decisions are in
+`data/deposit/screening_decisions.csv` and the check in `data/deposit/screening_check.csv`.

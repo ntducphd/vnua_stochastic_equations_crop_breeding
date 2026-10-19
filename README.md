@@ -33,6 +33,7 @@ From the repository root:
 | `python -I -B scripts/monte_carlo_check.py` | Monte Carlo check of Table 2 (100,000 replicates per scenario by default) |
 | `python -I -B scripts/check_eigenvalue_inflation.py` | largest-eigenvalue inflation of an estimated covariance matrix (Table 3) |
 | `python -I -B genome/scripts/genome_numbers.py` | the genome values quoted in Sections 3.3 and 4.4 |
+| `cd data && python -I -B pipeline/test_screen_records.py` | one test case for each screening rule (needs no database export) |
 
 The Euler–Maruyama paths of Figure 5a use seed 42; the other figures are deterministic. The literature-search
 pipeline is described in `data/README.md` and the genome tables in `genome/README.md`.

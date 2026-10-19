@@ -3,12 +3,12 @@
 deduplication and title/abstract screening; full texts were not assessed).
 
 Every count is computed from the data: identification from the Scopus and Web of Science exports in raw/, and
-deduplication and screening from pipeline_output/03_final_decisions.csv. The screening decisions were made by the
-AI assistant (Claude, Anthropic) at the first author's instruction (manuscript Section 2.2).
+deduplication and screening from pipeline_output/03_final_decisions.csv, the decisions of the screening rules
+(pipeline/02_screen_records.py; manuscript Section 2.2).
 
 Drawn with ../scripts/fig_style.py at the printed width (160 mm, Arial 7 pt) and saved as vector PDF and 600 dpi PNG.
 
-Usage: python -I pipeline/06_render_figure1_prisma_flow.py   (run from data/, after step 03)
+Usage: python -I pipeline/06_render_figure1_prisma_flow.py   (run from data/, after step 02)
 """
 import glob
 import os
@@ -28,6 +28,7 @@ REASONS = {   # final_exclusion_reason -> wording in the figure, in display orde
     "not_genetics_domain": "outside the genetics and breeding domain",
     "keyword_coincidence": "search terms matched incidentally",
     "not_stochastic_framework": "no stochastic model",
+    "wrong_document_type": "not a research or review article",
 }
 
 # ---- counts ----

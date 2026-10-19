@@ -5,10 +5,12 @@ Scopus and Web of Science Core Collection were searched without a lower date lim
 Section 2.1 of the paper; the exact query strings were not kept. Eligibility criteria:
 `../protocol/eligibility_criteria.md`.
 
-A rule-based classifier (step 02) suggested a decision for each record. An AI assistant (Claude, Anthropic)
-confirmed or overrode each suggestion at the first author's instruction and changed 177 of them. On 75
-records read by the assistant without the suggestions, the classifier agreed with it at κ = 0.365 after
-revision (0.180 before); both values are in-sample. Full texts were not assessed.
+Titles, abstracts and keywords are screened by explicit rules (step 02). `pipeline/screening_rules.yaml`
+writes each eligibility criterion as term lists and thresholds; `pipeline/02_screen_records.py` applies them and
+records, for every record, the decision, the rule that made it, the matched terms and the SHA-256 of the rules
+file. The same records and rules always give the same decisions. The rules were refined on a random half of the
+records and then frozen (version 1.2). Step 03 checks them against a blinded human reading of a stratified random
+sample of 100 records. Full texts were not assessed.
 
 ## Pipeline
 
@@ -17,8 +19,9 @@ Run from this folder, in order:
 | Step | Script | Output |
 |---|---|---|
 | 01 | `pipeline/01_dedupe.py` | deduplicated records and identification counts |
-| 02 | `pipeline/02_ai_screening.py` | classifier suggestions |
-| 03 | `pipeline/03_merge_screening_decisions.py` | final decisions (applies `pipeline/screening_decisions_ledger.csv`) |
+| 02 | `pipeline/02_screen_records.py` | screening decisions, rules and matched terms (`pipeline/screening_rules.yaml`) |
+| 03 | `pipeline/03_check_screening.py sample` / `score` | blinded check sample of 100 records, then its agreement with the rules |
+| test | `pipeline/test_screen_records.py` | one test case per screening rule |
 | 04 | `pipeline/04_reconcile_citations.py` | cited works also retrieved by the search |
 | 05 | `pipeline/05_build_workbook.py` | screening workbook |
 | 06 | `pipeline/06_render_figure1_prisma_flow.py` | Figure 2 (PRISMA 2020 flow diagram) |
@@ -38,8 +41,8 @@ assigns equation families and application domains with the regular expressions a
 | File | Contents |
 |---|---|
 | `deposit/records_identified.csv` | the 1,695 retrieved records: database, Scopus EID or Web of Science UT, DOI, title, year, source, document type |
-| `deposit/screening_decisions.csv` | the 1,059 deduplicated records with the classifier suggestion and the final decision and reason |
-| `deposit/screening_decisions_ledger.csv` | the 202 decisions entered through the ledger, with reasons |
+| `deposit/screening_decisions.csv` | the 1,059 deduplicated records with the decision, reason, rule, scores, matched terms and rules version |
+| `deposit/screening_check.csv` | the blinded reading of the check sample next to the rules' decision (written by step 03 `score`) |
 | `deposit/citation_reconciliation.csv` | the 135 cited works matched against the screened records |
 | `deposit/R01_screening_workbook.xlsx` | screening workbook: criteria, decisions, PRISMA counts, calibration summary |
 | `deposit/evidence_map_records.csv` | family and domain flags of the 989 retained records, with identifiers and year |
@@ -48,8 +51,8 @@ assigns equation families and application domains with the regular expressions a
 
 ## Results
 
-- Final decisions: 989 retained, 27 uncertain, 43 excluded (30 outside genetics or breeding, 8 incidental
-  keyword matches, 5 without a stochastic model).
+- Screening decisions (rules 1.2): 1,000 retained, 15 uncertain, 44 excluded (37 outside genetics or breeding,
+  4 matched through another sense of the words, 3 without a stochastic model).
 - 9 of the 135 cited works were also retrieved by the search.
-- Records per family: master equations and Markov chains 282, diffusion 675, coalescent 167, branching 196,
-  control 9, simulation 78, no family term 40. Plant terms occur in 42 records and breeding terms in 13.
+- Records per family: master equations and Markov chains 279, diffusion 680, coalescent 168, branching 202,
+  control 8, simulation 79, no family term 43. Plant terms occur in 46 records and breeding terms in 15.

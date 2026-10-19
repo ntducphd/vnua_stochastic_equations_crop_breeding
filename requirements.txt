@@ -10,3 +10,4 @@ xlrd==2.0.2
 networkx==3.6.1
 scikit-learn==1.8.0
 pillow==12.3.0
+pyyaml==6.0.3
