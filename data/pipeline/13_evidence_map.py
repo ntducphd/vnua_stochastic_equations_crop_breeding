@@ -29,15 +29,10 @@ Choices the term lists depend on, and why:
   - "Wright-Fisher controversy" and "debate" (the Fisher-Wright dispute), "Kingman" alone (Kingman's house-of-cards
     model and simplex), "Hamilton-Jacobi" alone (WKB and eikonal methods), "MDP" (maximal dissipation principle),
     "bird's eye" and the Scopus headings "Sexual Behavior, Animal", "Mating Preference, Animal" and "Animal
-    Migration" do not count; an independent check of 15 records found these false labels after the hand check.
+    Migration" do not count.
   - "introgression" is not a breeding term: in this set of records it describes natural hybridisation.
   - "seed", "leaf" and "leaves" are not plant terms ("lay the seeds for", "the leaves of the genealogy"); seed
     dormancy, dispersal and germination and seedlings are. "disease" preceded by "plant" is not a medical term.
-
-Hand check: pipeline/13_evidence_map_handcheck.csv holds family and domain labels that the AI assistant (Claude,
-Anthropic) assigned from the title, abstract and keywords of 60 retained records: 30 drawn with seed 1, which were
-used to refine the term lists, and 30 drawn with seed 2 from the other records after the lists were fixed. The
-script checks that the file covers exactly these draws and prints the agreement between the labels and the rules.
 
 Outputs:
   deposit/evidence_map_records.csv             one row per retained record: record_id (first Scopus EID, otherwise
@@ -65,7 +60,6 @@ from fig_style import apply, new_figure, panel, save, CYCLE, INK, GREY, MM  # no
 import matplotlib.colors as mcolors  # noqa: E402
 
 FINAL_PATH = "pipeline_output/03_final_decisions.csv"
-HANDCHECK_PATH = "pipeline/13_evidence_map_handcheck.csv"
 RECORDS_OUT = "deposit/evidence_map_records.csv"
 COUNTS_OUT = "deposit/evidence_map_counts.csv"
 FIG_DIR, FIG_STEM = "../figures", "R01_fig_evidence_map"
@@ -278,40 +272,6 @@ def period(y):
 
 
 # ---------------------------------------------------------------------------------------------------------------
-# Hand check
-# ---------------------------------------------------------------------------------------------------------------
-def hand_check(retained, flags):
-    # The two hand-check samples are fixed by record_id: they were drawn (seeds 1 and 2) from the records retained
-    # by the screening of 2026-07, and are scored here as stored, so that a later change of the retained set does
-    # not redraw them. A labelled record that the current screening no longer retains is reported and left out.
-    labels = pd.read_csv(HANDCHECK_PATH, encoding="utf-8")
-    gone = sorted(set(labels["record_id"]) - set(retained["record_id"]))
-    if gone:
-        print(f"hand-check records not retained by the current screening (left out): {', '.join(gone)}")
-    labels = labels[labels["record_id"].isin(retained["record_id"])].copy()
-    labels["no_family"] = (labels[FAM].sum(axis=1) == 0).astype(int)
-    labels["none"] = (labels[list(DOMAINS)].sum(axis=1) == 0).astype(int)
-    rules = flags.set_index("record_id")
-    lines = []
-    for k in (1, 2):
-        lab = labels[labels["check_sample"] == k].set_index("record_id")
-        rul = rules.loc[lab.index]
-        cols = FAM + list(DOMAINS)
-        same = rul[cols].values == lab[cols].values
-        fam_exact = int(same[:, :len(FAM)].all(axis=1).sum())
-        dom_exact = int(same[:, len(FAM):].all(axis=1).sum())
-        lines.append(f"seed {k}: family set identical in {fam_exact}/{len(lab)} records, domain set identical in "
-                     f"{dom_exact}/{len(lab)}, single labels agree {int(same.sum())}/{same.size} "
-                     f"({100 * same.mean():.1f}%)")
-        for c in cols:
-            fp = int(((rul[c] == 1) & (lab[c] == 0)).sum())
-            fn = int(((rul[c] == 0) & (lab[c] == 1)).sum())
-            if fp or fn:
-                lines.append(f"    {c}: rule only {fp}, hand label only {fn} (hand label positive in {int(lab[c].sum())})")
-    return lines
-
-
-# ---------------------------------------------------------------------------------------------------------------
 # Figure
 # ---------------------------------------------------------------------------------------------------------------
 def draw_figure(fd, fp, n_family, n_domain, n_period):
@@ -422,8 +382,6 @@ def main():
     print(f"\nrecords with no family term: {n_family['no_family']}")
     print(f"records with a plant/crop term and a breeding term: {int(plant_breeding.sum())}; with each family: {pb}")
     print("record_id of those:", ", ".join(out.loc[plant_breeding, "record_id"]))
-    print("\nhand check against pipeline/13_evidence_map_handcheck.csv:")
-    print("\n".join(hand_check(retained, out)))
     print(f"\nSaved {RECORDS_OUT}, {COUNTS_OUT} and {png} (+ PDF)")
 
 

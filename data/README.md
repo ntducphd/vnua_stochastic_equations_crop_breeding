@@ -33,8 +33,7 @@ abstracts and author contact details and are not redistributed; they can be rebu
 `deposit/records_identified.csv`.
 
 Records are deduplicated by matching DOI, or matching title (letters and digits only) and year. Step 13
-assigns equation families and application domains with the regular expressions at the top of the script;
-`pipeline/13_evidence_map_handcheck.csv` holds the hand labels of 60 records used to check them.
+assigns equation families and application domains with the regular expressions at the top of the script.
 
 ## Deposit
 

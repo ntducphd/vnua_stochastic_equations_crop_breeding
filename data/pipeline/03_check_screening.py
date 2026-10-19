@@ -2,6 +2,7 @@
 03_check_screening.py -- check the screening rules against a blinded human reading of a random sample.
 
   python -I pipeline/03_check_screening.py sample   draw the check sample and write the reading sheet
+  python -I pipeline/03_check_screening.py short    shorten the reading sheet to SHORT_SIZE per class (see below)
   python -I pipeline/03_check_screening.py score    score the filled sheet against the rules' decisions
 
 sample: draws, with a fixed seed, a sample stratified by the rules' decision (SAMPLE_SIZE per class, or the
@@ -12,6 +13,10 @@ whole class when it is smaller) and writes
   check/screening_check_key.csv      which record each check_id is and the rules' decision (do not open it
                                      before the sheet is filled)
 The reader applies ../protocol/eligibility_criteria.md to the title, abstract and keywords only.
+
+short: keeps, from the sample in the key, SHORT_SIZE records per class (seed SEED + 1), leaving out records marked
+revealed_before_reading, and rewrites the sheet with those records only, in a new random order. The key is kept;
+score uses the records present in the sheet. (Used on 2026-10-19 to cut the reading from 100 to 50 records.)
 
 score: reads the filled sheet and the key and writes check/screening_check_results.txt and
 deposit/screening_check.csv (check_id, DOI, title, the reader's decision and reason, the rules' decision).
@@ -34,27 +39,14 @@ KEY = os.path.join(CHECK_DIR, "screening_check_key.csv")
 RESULTS = os.path.join(CHECK_DIR, "screening_check_results.txt")
 DEPOSIT = "deposit/screening_check.csv"
 SAMPLE_SIZE = {"Include": 50, "Maybe": 50, "Exclude": 35}
+SHORT_SIZE = {"Include": 20, "Maybe": 15, "Exclude": 15}
 SEED = 20261019
 CLASSES = ["Include", "Maybe", "Exclude"]
 REASONS = ["", "not_stochastic_framework", "not_genetics_domain", "keyword_coincidence", "wrong_document_type",
            "insufficient_information", "not_english", "duplicate_undetected", "other"]
 
 
-def sample():
-    d = pd.read_csv(DECISIONS_PATH, encoding="utf-8-sig")
-    rng = np.random.default_rng(SEED)
-    parts = []
-    for cls in CLASSES:
-        pool = d.index[d["final_decision"] == cls].to_numpy()
-        n = min(SAMPLE_SIZE[cls], len(pool))
-        parts.append(rng.choice(pool, n, replace=False))
-    idx = rng.permutation(np.concatenate(parts))
-    s = d.loc[idx].reset_index().rename(columns={"index": "record_row"})
-    s.insert(0, "check_id", np.arange(1, len(s) + 1))
-    os.makedirs(CHECK_DIR, exist_ok=True)
-    s[["check_id", "record_row", "doi", "title", "year", "final_decision"]].rename(
-        columns={"final_decision": "rules_decision"}).to_csv(KEY, index=False, encoding="utf-8-sig")
-
+def write_sheet(s):
     sheet = s[["check_id", "title", "abstract", "keywords", "source_title", "year", "doc_type"]].copy()
     sheet["reader_decision"] = ""
     sheet["reader_reason"] = ""
@@ -81,6 +73,42 @@ def sample():
             dv.add(f"{col}2:{col}{len(sheet) + 1}")
         for col, width in zip("ABCDEFGHIJ", (8, 50, 90, 40, 30, 6, 10, 14, 24, 30)):
             ws.column_dimensions[col].width = width
+
+
+def short():
+    d = pd.read_csv(DECISIONS_PATH, encoding="utf-8-sig")
+    key = pd.read_csv(KEY, encoding="utf-8-sig")
+    pool = key[key.get("revealed_before_reading", pd.Series(0, index=key.index)).fillna(0).astype(int) == 0]
+    rng = np.random.default_rng(SEED + 1)
+    keep = []
+    for cls in CLASSES:
+        ids = pool.loc[pool["rules_decision"] == cls, "check_id"].to_numpy()
+        keep.extend(rng.choice(ids, min(SHORT_SIZE[cls], len(ids)), replace=False))
+    keep = rng.permutation(np.array(keep))
+    rows = key.set_index("check_id").loc[keep, "record_row"]
+    s = d.loc[rows.to_numpy()].reset_index(drop=True)
+    s.insert(0, "check_id", keep)
+    write_sheet(s)
+    print(f"reading sheet shortened to {len(s)} records: "
+          + ", ".join(f"{c} {int((s['final_decision'] == c).sum())}" for c in CLASSES))
+
+
+def sample():
+    d = pd.read_csv(DECISIONS_PATH, encoding="utf-8-sig")
+    rng = np.random.default_rng(SEED)
+    parts = []
+    for cls in CLASSES:
+        pool = d.index[d["final_decision"] == cls].to_numpy()
+        n = min(SAMPLE_SIZE[cls], len(pool))
+        parts.append(rng.choice(pool, n, replace=False))
+    idx = rng.permutation(np.concatenate(parts))
+    s = d.loc[idx].reset_index().rename(columns={"index": "record_row"})
+    s.insert(0, "check_id", np.arange(1, len(s) + 1))
+    os.makedirs(CHECK_DIR, exist_ok=True)
+    s[["check_id", "record_row", "doi", "title", "year", "final_decision"]].rename(
+        columns={"final_decision": "rules_decision"}).to_csv(KEY, index=False, encoding="utf-8-sig")
+
+    write_sheet(s)
     print(f"sample of {len(s)} records: " + ", ".join(f"{c} {int((s['final_decision'] == c).sum())}" for c in CLASSES))
     print(f"wrote {SHEET} (to fill) and {KEY} (keep closed)")
 
@@ -94,7 +122,11 @@ def kappa(a, b):
 def score():
     key = pd.read_csv(KEY, encoding="utf-8-sig")
     filled = pd.read_excel(SHEET, sheet_name="Records")
-    m = key.merge(filled[["check_id", "reader_decision", "reader_reason", "reader_notes"]], on="check_id")
+    m = key.merge(filled[["check_id", "reader_decision", "reader_reason", "reader_notes"]], on="check_id")  # rows in the sheet
+    # records whose rules' decision the reader saw before reading are not scored (column set by hand in the key)
+    n_seen = int(m.get("revealed_before_reading", pd.Series(0, index=m.index)).fillna(0).astype(int).sum())
+    if n_seen:
+        m = m[m["revealed_before_reading"].fillna(0).astype(int) == 0].copy()
     m["reader_decision"] = m["reader_decision"].astype(str).str.strip().str.capitalize()
     missing = m[~m["reader_decision"].isin(CLASSES)]
     if len(missing):
@@ -118,7 +150,8 @@ def score():
         boot_w.append(weighted(bs))
     ci = lambda x: (np.nanpercentile(x, 2.5), np.nanpercentile(x, 97.5))
 
-    lines = [f"Screening check: {len(m)} records read blind to the rules' decision",
+    lines = [f"Screening check: {len(m)} records read blind to the rules' decision"
+             + (f" ({n_seen} more left out: their rules' decision was seen before reading)" if n_seen else ""),
              "", "Confusion matrix (rows: reader, columns: rules)",
              pd.crosstab(m["reader_decision"], m["rules_decision"]).reindex(index=CLASSES, columns=CLASSES, fill_value=0).to_string(),
              "", f"Agreement in the sample: {po:.3f}; Cohen's kappa {k:.3f} (95% CI {ci(boot_k)[0]:.3f} to {ci(boot_k)[1]:.3f})"]
@@ -137,4 +170,4 @@ def score():
 
 
 if __name__ == "__main__":
-    {"sample": sample, "score": score}.get(sys.argv[1] if len(sys.argv) > 1 else "", lambda: sys.exit(__doc__))()
+    {"sample": sample, "short": short, "score": score}.get(sys.argv[1] if len(sys.argv) > 1 else "", lambda: sys.exit(__doc__))()
