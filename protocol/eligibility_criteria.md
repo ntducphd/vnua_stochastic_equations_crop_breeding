@@ -46,4 +46,5 @@ thresholds for criteria I3, I4, I5, E1, E2, E3, E5 and E6, and `data/pipeline/02
 record a decision, a reason, the rule that decided it and the matched terms. Records with too little evidence
 either way are classed as uncertain (Maybe). A stratified random sample of 100 records is read blind to the rules'
 decisions (`data/pipeline/03_check_screening.py`). Full texts were not assessed. Decisions are in
-`data/deposit/screening_decisions.csv` and the check in `data/deposit/screening_check.csv`.
+`data/deposit/screening_decisions.csv` and the check in `data/deposit/screening_check.csv`. The analysis plan of the check, with its
+acceptance threshold, was fixed before the key was opened: `screening_check_plan.md`.

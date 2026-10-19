@@ -20,9 +20,17 @@ score uses the records present in the sheet. (Used on 2026-10-19 to cut the read
 
 score: reads the filled sheet and the key and writes check/screening_check_results.txt and
 deposit/screening_check.csv (check_id, DOI, title, the reader's decision and reason, the rules' decision).
-Reported: the confusion matrix, Cohen's kappa on the sample, agreement in each stratum, and the overall agreement
-weighted by the share of each stratum among all screened records, each with a 95% bootstrap interval
-(resampling within strata, 10,000 replicates, seed 20261019).
+The metrics and the acceptance threshold were fixed before the key was opened (../protocol/screening_check_plan.md).
+Population quantities are estimated with stratum weights: each stratum (the rules' decision) counts with its share
+of all screened records, so the over-sampled Maybe and Exclude strata do not bias the estimates.
+  recall (primary)    P(rules do not exclude | reader Include); accepted when the estimate is >= RECALL_THRESHOLD
+  strict recall       P(rules Include | reader Include)
+  specificity         P(rules Exclude | reader Exclude)
+  weighted agreement  P(rules decision = reader decision), three classes
+  missed eligible     estimated number of reader-Include records among all records the rules exclude
+  Cohen's kappa and PABAK (prevalence- and bias-adjusted kappa, three classes) on the sample
+Reader Maybe counts in the agreement and kappa but in neither the recall nor the specificity denominator. Every
+interval is a 95% bootstrap percentile interval (resampling within strata, 10,000 replicates, seed 20261019).
 
 Usage: run from data/ after pipeline/02_screen_records.py.
 """
@@ -41,6 +49,7 @@ DEPOSIT = "deposit/screening_check.csv"
 SAMPLE_SIZE = {"Include": 50, "Maybe": 50, "Exclude": 35}
 SHORT_SIZE = {"Include": 20, "Maybe": 15, "Exclude": 15}
 SEED = 20261019
+RECALL_THRESHOLD = 0.95          # pre-specified, ../protocol/screening_check_plan.md
 CLASSES = ["Include", "Maybe", "Exclude"]
 REASONS = ["", "not_stochastic_framework", "not_genetics_domain", "keyword_coincidence", "wrong_document_type",
            "insufficient_information", "not_english", "duplicate_undetected", "other"]
@@ -119,6 +128,31 @@ def kappa(a, b):
     return po, (po - pe) / (1 - pe) if pe < 1 else float("nan")
 
 
+def pabak(a, b):
+    k = len(CLASSES)
+    return (k * float(np.mean(a == b)) - 1) / (k - 1)
+
+
+def weighted_metrics(df, share, n_rules):
+    """Population estimates from a sample stratified by the rules' decision."""
+    joint = {}                                    # P(rules = s, reader = r)
+    for s_ in CLASSES:
+        g = df[df["rules_decision"] == s_]
+        for r in CLASSES:
+            joint[s_, r] = share.get(s_, 0) * (float(np.mean(g["reader_decision"] == r)) if len(g) else 0.0)
+    elig = sum(joint[s_, "Include"] for s_ in CLASSES)
+    inel = sum(joint[s_, "Exclude"] for s_ in CLASSES)
+    nan = float("nan")
+    excl = df[df["rules_decision"] == "Exclude"]
+    return {
+        "recall": (joint["Include", "Include"] + joint["Maybe", "Include"]) / elig if elig else nan,
+        "strict_recall": joint["Include", "Include"] / elig if elig else nan,
+        "specificity": joint["Exclude", "Exclude"] / inel if inel else nan,
+        "agreement": sum(joint[c, c] for c in CLASSES),
+        "missed": n_rules.get("Exclude", 0) * (float(np.mean(excl["reader_decision"] == "Include")) if len(excl) else 0.0),
+    }
+
+
 def score():
     key = pd.read_csv(KEY, encoding="utf-8-sig")
     filled = pd.read_excel(SHEET, sheet_name="Records")
@@ -133,35 +167,43 @@ def score():
         sys.exit(f"{len(missing)} rows have no valid reader_decision (check_id {missing['check_id'].tolist()[:10]} ...)")
 
     all_d = pd.read_csv(DECISIONS_PATH, encoding="utf-8-sig")["final_decision"]
-    share = all_d.value_counts(normalize=True)
+    share, n_rules = all_d.value_counts(normalize=True), all_d.value_counts()
     a, b = m["reader_decision"].to_numpy(), m["rules_decision"].to_numpy()
     po, k = kappa(a, b)
-
-    def weighted(df):
-        return sum(share.get(c, 0) * float(np.mean(df.loc[df["rules_decision"] == c, "reader_decision"] == c))
-                   for c in CLASSES if (df["rules_decision"] == c).any())
+    pb = pabak(a, b)
+    est = weighted_metrics(m, share, n_rules)
 
     rng = np.random.default_rng(SEED)
-    strata = {c: m[m["rules_decision"] == c] for c in CLASSES}
-    boot_k, boot_w = [], []
+    strata = [m[m["rules_decision"] == c] for c in CLASSES if (m["rules_decision"] == c).any()]
+    boot = {name: [] for name in list(est) + ["kappa", "pabak"]}
     for _ in range(10000):
-        bs = pd.concat([g.iloc[rng.integers(0, len(g), len(g))] for g in strata.values() if len(g)])
-        boot_k.append(kappa(bs["reader_decision"].to_numpy(), bs["rules_decision"].to_numpy())[1])
-        boot_w.append(weighted(bs))
-    ci = lambda x: (np.nanpercentile(x, 2.5), np.nanpercentile(x, 97.5))
+        bs = pd.concat([g.iloc[rng.integers(0, len(g), len(g))] for g in strata])
+        x, y = bs["reader_decision"].to_numpy(), bs["rules_decision"].to_numpy()
+        boot["kappa"].append(kappa(x, y)[1])
+        boot["pabak"].append(pabak(x, y))
+        for name, v in weighted_metrics(bs, share, n_rules).items():
+            boot[name].append(v)
+    ci = lambda name: (np.nanpercentile(boot[name], 2.5), np.nanpercentile(boot[name], 97.5))
+    fmt = lambda name, v, d=3: f"{v:.{d}f} (95% CI {ci(name)[0]:.{d}f} to {ci(name)[1]:.{d}f})"
 
     lines = [f"Screening check: {len(m)} records read blind to the rules' decision"
              + (f" ({n_seen} more left out: their rules' decision was seen before reading)" if n_seen else ""),
              "", "Confusion matrix (rows: reader, columns: rules)",
              pd.crosstab(m["reader_decision"], m["rules_decision"]).reindex(index=CLASSES, columns=CLASSES, fill_value=0).to_string(),
-             "", f"Agreement in the sample: {po:.3f}; Cohen's kappa {k:.3f} (95% CI {ci(boot_k)[0]:.3f} to {ci(boot_k)[1]:.3f})"]
+             ""]
     for c in CLASSES:
-        g = strata[c]
+        g = m[m["rules_decision"] == c]
         if len(g):
             lines.append(f"Rules {c}: reader agreed on {int((g['reader_decision'] == c).sum())} of {len(g)}")
-    w = weighted(m)
-    lines += [f"Agreement weighted by stratum share among all {len(all_d)} records: {w:.3f} "
-              f"(95% CI {ci(boot_w)[0]:.3f} to {ci(boot_w)[1]:.3f})"]
+    lines += ["", f"Estimates for all {len(all_d)} screened records (stratum-weighted):",
+              f"  recall (rules do not exclude a reader-Include record): {fmt('recall', est['recall'])}"
+              f"  -> {'meets' if est['recall'] >= RECALL_THRESHOLD else 'does NOT meet'} the pre-specified threshold {RECALL_THRESHOLD}",
+              f"  strict recall (rules Include):                        {fmt('strict_recall', est['strict_recall'])}",
+              f"  specificity (rules Exclude a reader-Exclude record):   {fmt('specificity', est['specificity'])}",
+              f"  agreement, three classes:                              {fmt('agreement', est['agreement'])}",
+              f"  eligible records among the {int(n_rules.get('Exclude', 0))} the rules exclude: "
+              f"{fmt('missed', est['missed'], 1)}",
+              "", f"On the sample: agreement {po:.3f}; Cohen's kappa {fmt('kappa', k)}; PABAK {fmt('pabak', pb)}"]
     open(RESULTS, "w", encoding="utf-8").write("\n".join(lines) + "\n")
     m[["check_id", "doi", "title", "reader_decision", "reader_reason", "rules_decision"]].to_csv(
         DEPOSIT, index=False, encoding="utf-8-sig")
