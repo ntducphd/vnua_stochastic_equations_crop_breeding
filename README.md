@@ -1,9 +1,12 @@
-# Stochastic equations in crop breeding
+# Stochastic models for crop breeding
 
 Code and data for the review
 
-> Nguyen Trung Duc, Nguyen Thi Hoai Linh, Ta Viet Ton. Stochastic equations in crop breeding: a review of
-> models and applications. Manuscript in preparation.
+> Nguyen Trung Duc, Nguyen Thi Hoai Linh, Kaname Matsue, Ta Viet Ton. Stochastic models for crop breeding:
+> analytical foundations, simulation benchmarks and an exploratory evidence map. Submitted to *Information
+> Processing in Agriculture*.
+
+Corresponding author: Ta Viet Ton (<tavietton@agr.kyushu-u.ac.jp>), Kyushu University.
 
 ## Contents
 
